@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="">
 <div class="header container mx-auto grid grid-cols-4 gap-x-5 p-4">
     <div class="logo-container flex justify-center items-center">
         <a href="#">
             <img class="logo-img" src="{{ asset('img/logo.svg') }}" alt="Логотип">
         </a>
     </div>
-    <div class="datetime-container flex justify-center items-center col-span-2">
-        <div class="date-time">
-            Сегодня {{ \Carbon\Carbon::now()->locale('ru')->translatedFormat('d F Y, l') }}
-        </div>
-    </div>
-    <div class="actions-container grid grid-cols-2 gap-x-7">
+    <div class="actions-container grid grid-cols-2 gap-x-7 col-start-4">
         <div class="profile-container flex justify-center items-center">
             <a href="#" class="user-name">Петров А.</a>
         </div>

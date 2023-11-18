@@ -6,6 +6,7 @@
     --main-dark-color: #20222B;
     --main-light-color: #52576D;
     --main-red-color: #DD5D5D;
+    --main-green-color: #3EB489;
     --main-border-radius: 30px;
 }
 
@@ -21,9 +22,9 @@
 
 body {
     background-color: var(--main-dark-color);
-    padding: 40px;
+    padding: 20px 40px;
     color: #fff;
-    font-family: "JostMedium", sans-serif;
+    font-family: "JostRegular", sans-serif;
 }
 
 .header {
@@ -89,9 +90,54 @@ body {
     font-size: 27px;
     text-align: center;
     padding: 10px 0;
+    font-family: "JostRegular", sans-serif;
 }
 
 .section-container:hover {
-    transform: scale(102%);
-    box-shadow: 10px 10px 10px rgba(229, 229, 229, 0.2);
+    transform: scale(103%);
+}
+
+.birthday-people-container {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    padding: 10px;
+}
+
+.birthday-people-card {
+    background-color: var(--main-dark-color);
+    border-radius: var(--main-border-radius);
+    height: 200px;
+    transition: all ease .2s;
+    /*min-width: 330px;*/
+}
+
+.birthday-people-card:hover {
+    transform: scale(103%);
+}
+
+.birthday-people-card > .full-name-container {
+    font-size: 20px;
+    font-family: "JostRegular", sans-serif;
+}
+
+.birthday-people-card > .congratulations-datetime-container {
+    font-size: 18px;
+    font-family: "JostRegular", sans-serif;
+}
+
+.birthday-people-card > .button {
+    font-size: 18px;
+    font-family: "JostMedium", sans-serif;
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    width: 100%;
+    transition: all ease .2s;
+}
+
+.birthday-people-card > .button:hover {
+    transform: scale(103%);
+}
+
+.birthday-people-card > .congratulate {
+    background-color: var(--main-green-color);
 }
