@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --main-dark-color: #20222B;
+    --main-light-color: #52576D;
+    --main-red-color: #DD5D5D;
+    --main-border-radius: 30px;
+}
+
+@font-face {
+    font-family: JostMedium;
+    src: url('/public/fonts/static/Jost-Medium.ttf');
+}
+
+@font-face {
+    font-family: JostRegular;
+    src: url('/public/fonts/static/Jost-Regular.ttf');
+}
+
+body {
+    background-color: var(--main-dark-color);
+    padding: 40px;
+    color: #fff;
+    font-family: "JostMedium", sans-serif;
+}
+
+.header {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+}
+
+.logo-container {
+    background-color: var(--main-dark-color);
+    border-radius: var(--main-border-radius);
+    padding: 10px 30px;
+}
+
+.date-time {
+    font-size: 32px;
+}
+
+.actions-container {
+    background-color: var(--main-dark-color);
+    border-radius: var(--main-border-radius);
+    padding: 10px 30px;
+}
+
+.actions-container > .profile-container {
+
+}
+
+.actions-container > .profile-container > .user-name {
+    font-family: "JostMedium", sans-serif;
+}
+
+.theme-toggle-container {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    padding: 5px;
+    cursor: pointer;
+}
+
+.profile-button {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    padding: 5px;
+}
+
+.logout-button {
+    background-color: var(--main-red-color);
+    border-radius: var(--main-border-radius);
+    padding: 5px;
+}
+
+.toggle-circle {
+    background-color: #9CA2BD;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.section-container {
+    height: 200px;
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    transition: all ease .2s;
+    font-size: 27px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.section-container:hover {
+    transform: scale(102%);
+    box-shadow: 10px 10px 10px rgba(229, 229, 229, 0.2);
+}
