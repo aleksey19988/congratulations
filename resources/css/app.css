@@ -1,3 +1,6 @@
+@import url('employees/index.css');
+@import url('employees/create.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,10 +51,6 @@ body {
     padding: 10px 30px;
 }
 
-.actions-container > .profile-container {
-
-}
-
 .actions-container > .profile-container > .user-name {
     font-family: "JostMedium", sans-serif;
 }
@@ -75,13 +74,6 @@ body {
     padding: 5px;
 }
 
-.toggle-circle {
-    background-color: #9CA2BD;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-}
-
 .section-container {
     height: 200px;
     background-color: var(--main-light-color);
@@ -101,6 +93,15 @@ body {
     background-color: var(--main-light-color);
     border-radius: var(--main-border-radius);
     padding: 10px;
+    position: relative;
+}
+
+.birthday-people-container > .background-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .birthday-people-card {
@@ -108,12 +109,8 @@ body {
     border-radius: var(--main-border-radius);
     height: 200px;
     transition: all ease .2s;
-    /*min-width: 330px;*/
 }
 
-.birthday-people-card:hover {
-    transform: scale(103%);
-}
 
 .birthday-people-card > .full-name-container {
     font-size: 20px;
@@ -134,10 +131,15 @@ body {
     transition: all ease .2s;
 }
 
-.birthday-people-card > .button:hover {
-    transform: scale(103%);
-}
-
 .birthday-people-card > .congratulate {
     background-color: var(--main-green-color);
+}
+
+
+.add-new-employee-button:hover,
+.birthday-people-card:hover,
+.birthday-people-card > .button:hover,
+.employee-card-button:hover,
+.employee-card-action-button:hover {
+    transform: scale(103%);
 }

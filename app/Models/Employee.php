@@ -4,8 +4,43 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $patronymic
+ * @property string $birthday
+ * @property string $email
+ * @property int $position_id
+ */
 class Employee extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'patronymic',
+        'birthday',
+        'email',
+        'position_id',
+    ];
+
+    public function getFullName()
+    {
+        $nameAndLastname = "$this->first_name $this->last_name";
+
+        if (isset($this->patronymic)) {
+            return "$nameAndLastname $this->patronymic";
+        }
+
+        return $nameAndLastname;
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id', 'id');
+    }
 }

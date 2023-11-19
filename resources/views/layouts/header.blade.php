@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <title>Congratulations</title>
 </head>
 <body class="">
 <div class="header container mx-auto grid grid-cols-4 gap-x-5 p-4">
     <div class="logo-container flex justify-center items-center">
-        <a href="#">
+        <a href="/">
             <img class="logo-img" src="{{ asset('img/logo.svg') }}" alt="Логотип">
         </a>
     </div>
@@ -18,7 +19,7 @@
         </div>
         <div class="buttons-container grid grid-rows-4 grid-cols-3 gap-2">
             <div class="theme-toggle-container row-span-4 flex justify-between items-center flex-col">
-                <div class="toggle-circle"></div>
+                <img src="{{ asset('icons/toggle-theme-circle.svg') }}" alt="">
                 <img src="{{ asset('icons/dot.svg') }}" alt="">
                 <img src="{{ asset('icons/dot.svg') }}" alt="">
                 <img src="{{ asset('icons/sun.svg') }}" alt="">

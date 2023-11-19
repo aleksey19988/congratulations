@@ -1,0 +1,17 @@
+/*:root {*/
+/*    --main-dark-color: #20222B;*/
+/*    --main-light-color: #52576D;*/
+/*    --main-red-color: #DD5D5D;*/
+/*    --main-green-color: #3EB489;*/
+/*    --main-border-radius: 30px;*/
+/*}*/
+
+.input-field {
+    border-radius: var(--main-border-radius);
+    color: #1a202c;
+}
+
+#save-add-employee-form-button {
+    background-color: var(--main-green-color);
+    border-radius: var(--main-border-radius);
+}

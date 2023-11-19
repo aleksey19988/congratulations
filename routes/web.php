@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [AppController::class, 'index'])->name('app.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::view('/', 'index.index
-');
+Route::resource('employees', EmployeeController::class);
