@@ -15,9 +15,9 @@
                 <span class="info-message-text text-white">{{session('message')}}</span>
             </div>
         @endif
-
         <div class="employees-container">
             <?php /** @var Employee $employee */ ?>
+            {{ $employees->links('vendor.pagination.tailwind') }}
             @foreach($employees as $employee)
                 <div class="employee-card grid grid-cols-7 py-3 my-3">
                     <div class="employee-card-full-name-container col-span-2 flex items-center justify-center">
@@ -26,15 +26,25 @@
                     <div class="employee-card-employee-birthday-container col-span-2 flex items-center justify-center">
                         <span class="employee-birthday">{{ \Carbon\Carbon::make($employee->birthday)->translatedFormat('d.m.Y') }}</span>
                     </div>
-                    <div
-                        class="employee-card-congratulations-datetime-container col-span-2 flex flex-col items-center justify-center">
-                        <div class="employee-card-congratulations-datetime">
-                            Поздравили <span class=""> 23.07.2023 в 11:44</span>
+                    @if($employee->mailLog)
+                        <div class="employee-card-congratulations-datetime-container col-span-2 flex flex-col items-center justify-center">
+                            <div class="employee-card-congratulations-datetime">
+                                Поздравили <span class="">{{ \Carbon\Carbon::make($employee->mailLog->created_at)->format('d.m.Y в H:i') }}</span>
+                            </div>
+                            <a href="#" class="employee-card-button details text-center mt-2 py-1 w-3/5">
+                                Подробнее
+                            </a>
                         </div>
-                        <a href="#" class="employee-card-button details text-center mt-2 py-1 w-3/5">
-                            Подробнее
-                        </a>
-                    </div>
+                    @else
+                        <div class="employee-card-congratulations-datetime-container col-span-2 flex flex-col items-center justify-center">
+                            <div class="employee-card-congratulations-datetime">
+                                <span class="">Ещё не поздравляли</span>
+                            </div>
+                            <a href="#" class="employee-card-button congratulate-now text-center mt-2 py-1 w-3/5">
+                                Поздравить сейчас
+                            </a>
+                        </div>
+                    @endif
                     <div class="employee-card employee-card-actions-container flex items-center justify-evenly">
                         <a href="{{ route('employees.show', $employee->id) }}"
                            class="employee-card-action-button profile flex justify-center items-center w-2/5 p-1">

@@ -43,4 +43,9 @@ class Employee extends Model
     {
         return $this->belongsTo(Position::class, 'position_id', 'id');
     }
+
+    public function mailLog()
+    {
+        return $this->hasOne(MailLog::class, 'employee_id', 'id');
+    }
 }

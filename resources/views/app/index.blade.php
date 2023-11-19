@@ -26,35 +26,32 @@
             </div>
             @php /** @var \App\Models\Employee $employee */ @endphp
             @foreach($birthdayPeople as $employee)
-                <div class="flex-shrink-0 w-max px-10 birthday-people-card flex justify-around items-center flex-col mx-2 z-10">
+                <div class="birthday-people-card px-10 min-w-[22%] flex justify-around items-center flex-col mx-2 z-10">
                     <div class="full-name-container">
                     <span class="full-name">{{ $employee->getFullName() }}</span>
                     </div>
                     <div class="congratulations-datetime-container">
-                    <span class="congratulations-datetime">
-                        Поздравили в 08:47 🎉
-                    </span>
+                        @if ($employee->mailLog)
+                            <span class="congratulations-datetime">
+                                Поздравили в {{ \Carbon\Carbon::make($employee->maillog->created_at)->format('H:i') }} 🎉
+                            </span>
+                        @else
+                            <span class="congratulations-datetime">
+                                Скоро поздравим 🤫
+                            </span>
+                        @endif
                     </div>
-                    <a href="#" class="button py-1.5 flex justify-center items-center flex-col">
-                        Подробнее
-                    </a>
+                    @if ($employee->mailLog)
+                        <a href="#" class="button py-1.5 flex justify-center items-center flex-col">
+                            Подробнее
+                        </a>
+                    @else
+                        <a href="#" class="button py-1.5 congratulate flex justify-center items-center flex-col">
+                            Поздравить сейчас
+                        </a>
+                    @endif
                 </div>
             @endforeach
-            <div class="flex-shrink-0 w-max px-10 birthday-people-card flex justify-around items-center flex-col mx-2 z-10">
-                <div class="full-name-container">
-                    <span class="full-name">
-                        Иванов Иван Иванович
-                    </span>
-                </div>
-                <div class="congratulations-datetime-container">
-                    <span class="congratulations-datetime">
-                        Скоро поздравим 🤫
-                    </span>
-                </div>
-                <a href="#" class="button py-1.5 congratulate flex justify-center items-center flex-col">
-                    Поздравить сейчас
-                </a>
-            </div>
         </div>
     </div>
 @endsection

@@ -23,6 +23,10 @@
     transition: all ease .2s;
 }
 
+.congratulate-now {
+    background-color: var(--main-green-color);
+}
+
 .employee-card-action-button {
     background-color: var(--main-dark-color);
     border-radius: var(--main-border-radius);
