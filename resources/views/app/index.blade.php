@@ -22,7 +22,11 @@
         </div>
         <div class="birthday-people-container flex flex-nowrap overflow-x-auto">
             <div class="background-text z-0 flex justify-center items-center px-5">
-                <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="">
+                @if($birthdayPeople->count() > 0)
+                    <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="">
+                @else
+                    <img src="{{ asset('icons/without-birthday-people-background-text.svg') }}" alt="">
+                @endif
             </div>
             @php /** @var \App\Models\Employee $employee */ @endphp
             @foreach($birthdayPeople as $employee)

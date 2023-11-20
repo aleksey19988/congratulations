@@ -1,5 +1,6 @@
 @import url('employees/index.css');
 @import url('employees/create.css');
+@import url('employees/show.css');
 
 @tailwind base;
 @tailwind components;
@@ -94,6 +95,7 @@ body {
     border-radius: var(--main-border-radius);
     padding: 10px;
     position: relative;
+    min-height: 200px;
 }
 
 .birthday-people-container > .background-text{

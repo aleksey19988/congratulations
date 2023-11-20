@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
+ * @property int $id
  * @property string $first_name
  * @property string $last_name
  * @property string $patronymic
  * @property string $birthday
  * @property string $email
  * @property int $position_id
+ *
+ * @property Position $position
  */
 class Employee extends Model
 {
