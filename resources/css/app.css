@@ -56,13 +56,6 @@ body {
     font-family: "JostMedium", sans-serif;
 }
 
-.theme-toggle-container {
-    background-color: var(--main-light-color);
-    border-radius: var(--main-border-radius);
-    padding: 5px;
-    cursor: pointer;
-}
-
 .profile-button {
     background-color: var(--main-light-color);
     border-radius: var(--main-border-radius);
@@ -73,6 +66,10 @@ body {
     background-color: var(--main-red-color);
     border-radius: var(--main-border-radius);
     padding: 5px;
+}
+
+.header-action-button {
+    transition: all ease .2s;
 }
 
 .section-container {
@@ -137,7 +134,7 @@ body {
     background-color: var(--main-green-color);
 }
 
-
+.header-action-button:hover,
 .add-new-employee-button:hover,
 .birthday-people-card:hover,
 .birthday-people-card > .button:hover,

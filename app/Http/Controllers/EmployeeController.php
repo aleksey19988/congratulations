@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Models\Employee;
 use App\Models\Position;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -58,7 +55,7 @@ class EmployeeController extends Controller
     {
         $positions = Position::all();
 
-        return view ('employees.edit', compact('positions', 'employee'));
+        return view('employees.edit', compact('positions', 'employee'));
     }
 
     /**
