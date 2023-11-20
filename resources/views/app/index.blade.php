@@ -16,7 +16,7 @@
             <a href="{{ route('employees.index') }}" class="section-container flex justify-center items-center">
                 <p>Сотрудники</p>
             </a>
-            <a href="#" class="section-container flex justify-center items-center">
+            <a href="{{ route('mail-templates.index') }}" class="section-container flex justify-center items-center">
                 <p>Шаблоны поздравлений</p>
             </a>
         </div>

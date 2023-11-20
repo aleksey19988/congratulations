@@ -3,19 +3,15 @@
     font-family: JostMedium;
 }
 
-.add-new-employee-button {
-    border-radius: var(--main-border-radius);
-    font-size: 24px;
-    background-color: var(--main-green-color);
-    transition: all ease .2s;
-}
-
-.header-employee-card,
-.employee-card {
+.mail-template-card {
     background-color: var(--main-light-color);
     border-radius: var(--main-border-radius);
     font-size: 24px;
     transition: all ease .2s;
+}
+
+.mail-template-card-body {
+    font-size: 18px;
 }
 
 .employee-card-button {
@@ -29,14 +25,16 @@
     background-color: var(--main-green-color);
 }
 
-.employee-card-action-button {
+.mail-template-card-action-button {
     background-color: var(--main-dark-color);
     border-radius: var(--main-border-radius);
     transition: all ease .2s;
 }
 
-.employee-card-action-button.delete-profile {
+.delete-mail-template-button {
     background-color: var(--main-red-color);
+    border-radius: var(--main-border-radius);
+    transition: all ease .2s;
 }
 
 .employee-card-action-button img {

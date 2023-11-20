@@ -1,14 +1,9 @@
-@php
-    use App\Models\Employee;
-
-    /** @var \Illuminate\Database\Eloquent\Collection $employees */
-@endphp
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto">
         <div class="section-header-container flex flex-col items-center py-16">
             <div class="section-name">Сотрудники</div>
-            <a href="{{ route('employees.create') }}" class="add-new-employee-button py-1 flex justify-center w-3/12 mt-3">Добавить сотрудника</a>
+            <a href="{{ route('employees.create') }}" class="add-new-record-button py-1 flex justify-center w-3/12 mt-3">Добавить сотрудника</a>
         </div>
         @if(session('message'))
             <div class="info-message-container  p-5">
@@ -16,7 +11,21 @@
             </div>
         @endif
         <div class="employees-container">
-            <?php /** @var Employee $employee */ ?>
+            <div class="header-employee-card grid grid-cols-7 py-3 my-3">
+                <div class="header-employee-card-full-name-container col-span-2 flex items-center justify-center">
+                    <span class="header-employee-card-full-name">Полное имя</span>
+                </div>
+                <div class="header-employee-card-employee-birthday-container col-span-2 flex items-center justify-center">
+                    <span class="header-employee-birthday">Дата рождения</span>
+                </div>
+                    <div class="header-employee-card-congratulations-datetime-container col-span-2 flex flex-col items-center justify-center">
+                        <div class="header-employee-card-congratulations-datetime">
+                            <span class="">Когда поздравили</span>
+                        </div>
+                    </div>
+                <div class="employee-card-actions-container flex items-center justify-evenly"><span>Действия</span></div>
+            </div>
+            <?php /** @var \App\Models\Employee $employee */ ?>
             {{ $employees->links('vendor.pagination.tailwind') }}
             @foreach($employees as $employee)
                 <div class="employee-card grid grid-cols-7 py-3 my-3">
@@ -45,7 +54,7 @@
                             </a>
                         </div>
                     @endif
-                    <div class="employee-card employee-card-actions-container flex items-center justify-evenly">
+                    <div class="employee-card-actions-container flex items-center justify-evenly">
                         <a href="{{ route('employees.show', $employee->id) }}"
                            class="employee-card-action-button profile flex justify-center items-center w-2/5 p-1">
                             <img src="{{ asset('icons/profile.svg') }}" alt="" class="max-h-8">

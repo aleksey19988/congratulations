@@ -2,6 +2,8 @@
 @import url('employees/create.css');
 @import url('employees/show.css');
 
+@import url('mail-templates/index.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -72,6 +74,21 @@ body {
     transition: all ease .2s;
 }
 
+.add-new-record-button {
+    border-radius: var(--main-border-radius);
+    font-size: 24px;
+    background-color: var(--main-green-color);
+    font-family: "JostRegular", sans-serif;
+    transition: all ease .2s;
+}
+
+.list-item {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    font-size: 24px;
+    transition: all ease .2s;
+}
+
 .section-container {
     height: 200px;
     background-color: var(--main-light-color);
@@ -135,7 +152,7 @@ body {
 }
 
 .header-action-button:hover,
-.add-new-employee-button:hover,
+.add-new-record-button:hover,
 .birthday-people-card:hover,
 .birthday-people-card > .button:hover,
 .employee-card-button:hover,

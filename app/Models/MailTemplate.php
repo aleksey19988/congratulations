@@ -6,8 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property int $id
+ * @property string $subject
+ * @property string $body
+ */
 class MailTemplate extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function mailLog()
+    {
+        return $this->hasOne(MailLog::class, 'employee_id', 'id');
+    }
 }
