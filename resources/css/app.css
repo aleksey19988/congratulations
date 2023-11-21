@@ -3,6 +3,7 @@
 @import url('employees/show.css');
 
 @import url('mail-templates/index.css');
+@import url('mail-templates/show.css');
 
 @tailwind base;
 @tailwind components;

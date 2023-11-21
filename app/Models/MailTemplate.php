@@ -16,6 +16,8 @@ class MailTemplate extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = ['subject', 'body'];
+
     public function mailLog()
     {
         return $this->hasOne(MailLog::class, 'employee_id', 'id');

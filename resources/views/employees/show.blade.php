@@ -52,11 +52,11 @@
                 </a>
             </div>
             <div class="delete-profile-button-container">
-                <form action="{{ route('employees.show', $employee->id) }}" method="post">
+                <form action="{{ route('employees.destroy', $employee->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit">
-                        <a href="{{ route('employees.destroy', $employee->id) }}" class="delete-profile-button action-button flex justify-center items-center py-1 px-5 ml-3">
+                        <a href="" class="delete-profile-button action-button flex justify-center items-center py-1 px-5 ml-3">
                             <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="button-icon">
                         </a>
                     </button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MailTemplateRequest;
 use App\Models\MailTemplate;
 use Illuminate\Http\Request;
 
@@ -22,46 +23,55 @@ class MailTemplateController extends Controller
      */
     public function create()
     {
-        //
+        return view('mail-templates.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MailTemplateRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        MailTemplate::query()->create($validatedData);
+
+        return redirect(route('mail-templates.index'))->with('message', 'Шаблон успешно добавлен.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(MailTemplate $mailTemplate)
     {
-        //
+        return view('mail-templates.show', compact('mailTemplate'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(MailTemplate $mailTemplate)
     {
-        //
+        return view ('mail-templates.edit', compact('mailTemplate'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MailTemplateRequest $request, MailTemplate $mailTemplate)
     {
-        //
+        $validatedData = $request->validated();
+        $mailTemplate->update($validatedData);
+
+        return redirect(route('mail-templates.show', $mailTemplate))->with('message', 'Данные успешно обновлены.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(MailTemplate $mailTemplate)
     {
-        //
+        $subject = $mailTemplate->subject;
+        $mailTemplate->delete();
+
+        return redirect(route('mail-templates.index'))->with('message', "Шаблон '$subject' успешно удалён.");
     }
 }

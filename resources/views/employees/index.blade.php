@@ -59,11 +59,11 @@
                            class="employee-card-action-button profile flex justify-center items-center w-2/5 p-1">
                             <img src="{{ asset('icons/profile.svg') }}" alt="" class="max-h-8">
                         </a>
-                        <form action="{{ route('employees.show', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
+                        <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="w-full">
-                                <a href="{{ route('employees.destroy', $employee->id) }}" class="delete-profile-button action-button flex justify-center items-center py-1 px-5">
+                                <a href="" class="delete-profile-button action-button flex justify-center items-center py-1 px-5">
                                     <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="button-icon">
                                 </a>
                             </button>

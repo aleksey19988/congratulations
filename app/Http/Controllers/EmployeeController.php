@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEmployeeRequest;
+use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Contracts\View\View;
@@ -32,7 +32,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployeeRequest $request)
+    public function store(EmployeeRequest $request)
     {
         $validatedData = $request->validated();
         Employee::query()->create($validatedData)->save();
@@ -61,13 +61,12 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreEmployeeRequest $request, string $id)
+    public function update(EmployeeRequest $request, Employee $employee)
     {
         $validatedData = $request->validated();
-        $employee = Employee::query()->findOrFail($id);
         $employee->update($validatedData);
 
-        return redirect(route('employees.show', compact('employee')))->with('message', 'Данные успешно обновлены.');
+        return redirect(route('employees.show', $employee))->with('message', 'Данные успешно обновлены.');
     }
 
     /**
