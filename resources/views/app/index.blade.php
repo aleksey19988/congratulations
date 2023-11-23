@@ -50,7 +50,7 @@
                             Подробнее
                         </a>
                     @else
-                        <a href="#" class="button py-1.5 congratulate flex justify-center items-center flex-col">
+                        <a href="{{ route('congratulations.send', $employee->id) }}" class="button py-1.5 congratulate flex justify-center items-center flex-col">
                             Поздравить сейчас
                         </a>
                     @endif
