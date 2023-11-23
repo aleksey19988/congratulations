@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    private string $tableName = 'mail_templates';
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('mail_templates', function (Blueprint $table) {
+        Schema::create($this->tableName, function (Blueprint $table) {
             $table->id();
             $table->string('subject')->comment('Тема письма');
             $table->text('body')->comment('Тело письма');
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mail_templates');
+        Schema::dropIfExists($this->tableName);
     }
 };

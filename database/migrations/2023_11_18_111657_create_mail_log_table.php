@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    private string $tableName = 'mail_log';
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('mail_logs', function (Blueprint $table) {
+        Schema::create($this->tableName, function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('employee_id')->comment('ID сотрудника');
@@ -30,6 +32,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mail_logs');
+        Schema::table($this->tableName, function (Blueprint $table) {
+            $table->dropForeign(['mail_template_id']);
+            $table->dropForeign(['employee_id']);
+        });
+        Schema::dropIfExists($this->tableName);
     }
 };
