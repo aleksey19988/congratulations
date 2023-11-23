@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\MailTemplate;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             MailTemplateSeeder::class,
+            PositionSeeder::class,
+            EmployeeSeeder::class,
         ]);
     }
 }

@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\MailTemplate;
-use Database\Factories\MailTemplateFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class MailTemplateSeeder extends Seeder

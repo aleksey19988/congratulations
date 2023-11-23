@@ -10,6 +10,7 @@
                 <span class="info-message-text text-white">{{session('message')}}</span>
             </div>
         @endif
+        {{ $employees->links('vendor.pagination.tailwind') }}
         <div class="employees-container">
             <div class="header-employee-card grid grid-cols-7 py-3 my-3">
                 <div class="header-employee-card-full-name-container col-span-2 flex items-center justify-center">
@@ -26,7 +27,6 @@
                 <div class="employee-card-actions-container flex items-center justify-evenly"><span>Действия</span></div>
             </div>
             <?php /** @var \App\Models\Employee $employee */ ?>
-            {{ $employees->links('vendor.pagination.tailwind') }}
             @foreach($employees as $employee)
                 <div class="employee-card grid grid-cols-7 py-3 my-3">
                     <div class="employee-card-full-name-container col-span-2 flex items-center justify-center">

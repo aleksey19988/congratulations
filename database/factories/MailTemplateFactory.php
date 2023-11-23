@@ -17,7 +17,7 @@ class MailTemplateFactory extends Factory
     public function definition(): array
     {
         return [
-            'subject' => fake()->words(),
+            'subject' => fake()->words(3, true),
             'body' => fake()->text(),
         ];
     }

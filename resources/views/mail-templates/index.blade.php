@@ -10,6 +10,7 @@
                 <span class="info-message-text text-white">{{session('message')}}</span>
             </div>
         @endif
+        {{ $mailTemplates->links('vendor.pagination.tailwind') }}
         <div class="employees-container">
             <div class="mail-template-card grid grid-cols-7 py-3 my-3 gap-x-5">
                 <div class="header-mail-template-card-subject-container col-span-2 flex items-center justify-center">
@@ -20,7 +21,6 @@
                 </div>
                 <div class="mail-template-card mail-template-card-actions-container flex items-center justify-evenly col-start-7">Действия</div>
             </div>
-            {{ $mailTemplates->links('vendor.pagination.tailwind') }}
             @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
             @foreach($mailTemplates as $mailTemplate)
                 <div class="mail-template-card grid grid-cols-7 py-3 my-3 gap-x-5">

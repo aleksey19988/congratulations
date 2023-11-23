@@ -4,16 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 
 class AppController extends Controller
 {
-    public function index()
+    /**
+     * @return View
+     */
+    public function index(): View
     {
-        $birthdayPeople = Employee::query()
-            ->where('birthday', '>=', Carbon::today()->toDateTimeString())
-            ->get();
+        $employees = Employee::all();
+        $birthdayPeople = $this->getBirthdayEmployees($employees);
 
         return view('app.index', compact('birthdayPeople'));
+    }
+
+    private function getBirthdayEmployees(Collection $employees)
+    {
+        $today = Carbon::today();
+        return $employees->reduce(function(Collection $employees, Employee $employee) use ($today) {
+            $birthday = Carbon::make($employee->birthday);
+            if ($birthday->isBirthday($today)) {
+                $employees->push($employee);
+            }
+            return $employees;
+        }, collect());
     }
 }
