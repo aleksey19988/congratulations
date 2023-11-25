@@ -6,8 +6,9 @@
     transition: all ease .2s;
 }
 
-.mail-log-card-template a,
-.mail-log-card-subject a {
+
+.mail-log-card-employee-link,
+.mail-log-card-template-link {
     transition: all ease .2s;
 }
 
@@ -20,5 +21,9 @@
 }
 
 .error-send-status {
+    color: var(--main-red-color);
+}
+
+.related-model-was-removed-text {
     color: var(--main-red-color);
 }

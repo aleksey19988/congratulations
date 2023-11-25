@@ -30,16 +30,24 @@
                 @foreach($mailLog as $record)
                     <div class="mail-log-card grid grid-cols-7 py-3 my-3 gap-x-5">
                         <div class="mail-log-card-employee-container col-span-2 flex items-center justify-center">
-                            <span class="mail-log-card-subject">
-                                <a href="{{ route('employees.show', $record->employee->id) }}">
-                                    {{ $record->employee->getFullName() }}
-                                </a>
+                            <span class="mail-log-card-employee">
+                                @if($record->employee)
+                                    <a class="mail-log-card-employee-link" href="{{ route('employees.show', $record->employee->id) }}">{{ $record->employee->getFullName() }}</a>
+                                @else
+                                    <span class="related-model-was-removed-text">
+                                        Сотрудник был удалён
+                                    </span>
+                                @endif
                             </span>
                         </div>
                         <div class="mail-log-card-template-container col-span-4 flex items-center">
-                            <span class="mail-log-card-template">
-                                <a href="{{ route('mail-templates.show', $record->mailTemplate->id) }}">{{ $record->mailTemplate->subject }}</a>
-                            </span>
+                            @if($record->mailTemplate)
+                                <a class="mail-log-card-template-link" href="{{ route('mail-templates.show', $record->mailTemplate->id) }}">{{ $record->mailTemplate->subject }}</a>
+                            @else
+                                <span class="related-model-was-removed-text">
+                                    Шаблон письма был удалён
+                                </span>
+                            @endif
                         </div>
                         <div class="mail-log-card-send-status-container col-span-1 flex items-center">
                             <span class="mail-log-card-send-status {{ $record->is_send_success ? 'success-send-status' : 'error-send-status' }}">
