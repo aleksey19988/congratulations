@@ -15,15 +15,20 @@
     </div>
     <div class="actions-container grid grid-cols-2 gap-x-7 col-start-4">
         <div class="profile-container flex justify-center items-center">
-            <a href="#" class="user-name">Петров А.</a>
+            <a href="#" class="user-name">{{ Auth::user() ? Auth::user()->name : 'Неизвестный пользователь' }}</a>
         </div>
         <div class="buttons-container grid grid-rows-4 grid-cols-2 gap-2">
             <a class="profile-button header-action-button row-span-2 col-span-2 flex justify-center items-center" href="#">
                 <img src="{{ asset('icons/profile.svg') }}" alt="Профиль">
             </a>
-            <a class="logout-button header-action-button row-span-2 col-span-2 flex justify-center items-center" href="#">
-                <img src="{{ asset('icons/logout.svg') }}" alt="Выйти">
-            </a>
+            <form action="{{ route('logout') }}" method="post" class="row-span-2 col-span-2">
+                @csrf
+                @method('POST')
+                <button type="submit" class="logout-button header-action-button flex justify-center items-center w-full">
+                    <img src="{{ asset('icons/logout.svg') }}" alt="Выйти">
+                </button>
+            </form>
+
         </div>
     </div>
 </div>

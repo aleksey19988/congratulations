@@ -1,3 +1,4 @@
+@import url('auth/login.css');
 @import url('employees/index.css');
 @import url('employees/create.css');
 @import url('employees/show.css');
@@ -10,7 +11,7 @@
 @tailwind utilities;
 
 :root {
-    --main-dark-color: #20222B;
+    --main-dark-color: rgb(17 24 39);
     --main-light-color: #52576D;
     --main-red-color: #DD5D5D;
     --main-green-color: #3EB489;

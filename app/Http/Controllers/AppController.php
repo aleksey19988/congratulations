@@ -6,6 +6,7 @@ use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
