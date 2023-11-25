@@ -33,7 +33,7 @@
                     <div class="mail-template-card mail-template-card-actions-container flex items-center justify-evenly col-start-7">
                         <a href="{{ route('mail-templates.show', $mailTemplate->id) }}"
                            class="mail-template-card-action-button action-button profile flex justify-center items-center w-2/5 p-1">
-                            <img src="{{ asset('icons/document.svg') }}" alt="" class="max-h-8">
+                            <img src="{{ asset('icons/document.svg') }}" alt="" class="">
                         </a>
                         <form action="{{ route('mail-templates.destroy', $mailTemplate->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
                             @csrf

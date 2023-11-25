@@ -4,12 +4,17 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto">
+        <div class="go-back-button-container py-5">
+            <a href="{{ url()->previous() }}">
+                <button class="go-back-button py-1 px-5">Назад</button>
+            </a>
+        </div>
         @if(session('message'))
             <div class="info-message-container p-5 my-5">
                 <span class="info-message-text text-white">{{session('message')}}</span>
             </div>
         @endif
-        <div class="section-header-container employee-full-name-container py-16">
+        <div class="section-header-container employee-full-name-container pb-16">
             <div class="employee-full-name">{{ $employee->getFullName() }}</div>
         </div>
         <div class="employee-data-container mb-16">

@@ -153,6 +153,11 @@ body {
     background-color: var(--main-green-color);
 }
 
+.go-back-button {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+}
+
 .header-action-button:hover,
 .add-new-record-button:hover,
 .birthday-people-card:hover,
