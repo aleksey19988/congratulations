@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CongratulationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MailLogController;
 use App\Http\Controllers\MailTemplateController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         $congratulationController = new CongratulationController($employeeId);
         $congratulationController->send();
     })->name('congratulations.send');
+
+    Route::get('mail-log', [MailLogController::class, 'index'])->name('mail-log.index');
 });
 
 

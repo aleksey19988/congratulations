@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class MailLog extends Model
 {
     use HasFactory;
+    protected $table = 'mail_log';
 
-    public function employees(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function employee(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(Employee::class, 'id', 'employee_id');
+        return $this->hasOne(Employee::class, 'id', 'employee_id');
     }
 
-    public function mailTemplates(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function mailTemplate(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(MailTemplate::class, 'id', 'mail_template_id');
+        return $this->hasOne(MailTemplate::class, 'id', 'mail_template_id');
     }
 }

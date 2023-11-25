@@ -1,4 +1,7 @@
 @import url('auth/login.css');
+
+@import url('mail-log/index.css');
+
 @import url('employees/index.css');
 @import url('employees/create.css');
 @import url('employees/show.css');

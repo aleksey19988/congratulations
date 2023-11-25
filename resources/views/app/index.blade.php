@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="sections-container grid grid-cols-5 row-start-2 gap-x-5 pb-16">
-            <a href="#" class="section-container flex justify-center items-center">
+            <a href="{{ route('mail-log.index') }}" class="section-container flex justify-center items-center">
                 <p>Отправленные поздравления</p>
             </a>
             <a href="#" class="section-container flex justify-center items-center">

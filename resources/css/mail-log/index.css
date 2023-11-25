@@ -1,0 +1,24 @@
+.header-mail-log-card,
+.mail-log-card {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    font-size: 24px;
+    transition: all ease .2s;
+}
+
+.mail-log-card-template a,
+.mail-log-card-subject a {
+    transition: all ease .2s;
+}
+
+.mail-log-card a:hover {
+    color: var(--main-green-color);
+}
+
+.success-send-status {
+    color: var(--main-green-color);
+}
+
+.error-send-status {
+    color: var(--main-red-color);
+}
