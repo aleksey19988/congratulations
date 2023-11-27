@@ -24,7 +24,7 @@
             @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
             @foreach($mailTemplates as $mailTemplate)
                 <div class="mail-template-card grid grid-cols-7 py-3 my-3 gap-x-5">
-                    <div class="mail-template-card-subject-container col-span-2 flex items-center justify-center">
+                    <div class="mail-template-card-subject-container col-span-2 flex items-center justify-center px-3">
                         <span class="mail-template-card-subject">{{ $mailTemplate->subject }}</span>
                     </div>
                     <div class="mail-template-card-body-container col-span-4 flex items-center">
