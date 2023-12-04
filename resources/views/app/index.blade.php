@@ -10,7 +10,7 @@
             <a href="{{ route('mail-log.index') }}" class="section-container flex justify-center items-center">
                 <p>Отправленные поздравления</p>
             </a>
-            <a href="#" class="section-container flex justify-center items-center">
+            <a href="{{ route('manual-congratulations.index') }}" class="section-container flex justify-center items-center">
                 <p>Поздравить вручную</p>
             </a>
             <a href="{{ route('employees.index') }}" class="section-container flex justify-center items-center">

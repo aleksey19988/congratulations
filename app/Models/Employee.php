@@ -31,7 +31,7 @@ class Employee extends Model
         'position_id',
     ];
 
-    public function getFullName()
+    public function getFullName(): string
     {
         $nameAndLastname = "$this->first_name $this->last_name";
 

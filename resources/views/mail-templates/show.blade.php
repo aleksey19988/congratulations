@@ -21,7 +21,7 @@
             <div class="mail-template-data">
                 <div class="mail-template-data-section py-2 body-container">
                     <p class="subject">
-                        {{ $mailTemplate->body }}
+                        {!! nl2br($mailTemplate->body) !!}
                     </p>
                 </div>
             </div>

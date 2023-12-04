@@ -5,6 +5,7 @@ use App\Http\Controllers\CongratulationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MailLogController;
 use App\Http\Controllers\MailTemplateController;
+use App\Http\Controllers\ManualCongratulationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,10 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('employees', EmployeeController::class);
     Route::resource('mail-templates', MailTemplateController::class);
 
-    Route::get('/send-congratulation/{employeeId}', function(string $employeeId) {
-        $congratulationController = new CongratulationController($employeeId);
-        $congratulationController->send();
-    })->name('congratulations.send');
+    Route::get('/send-congratulation/{employeeId}', [CongratulationController::class, 'send'])->name('congratulations.send');
+
+    Route::get('manual-congratulation', [ManualCongratulationController::class, 'index'])->name('manual-congratulations.index');
+    Route::post('send-manual-congratulation', [ManualCongratulationController::class, 'send'])->name('manual-congratulations.send');
 
     Route::get('mail-log', [MailLogController::class, 'index'])->name('mail-log.index');
 });
