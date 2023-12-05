@@ -6,6 +6,10 @@
 @import url('employees/create.css');
 @import url('employees/show.css');
 
+@import url('positions/index.css');
+@import url('positions/create.css');
+@import url('positions/show.css');
+
 @import url('mail-templates/index.css');
 @import url('mail-templates/show.css');
 
@@ -166,6 +170,8 @@ body {
 .birthday-people-card:hover,
 .birthday-people-card > .button:hover,
 .employee-card-button:hover,
-.employee-card-action-button:hover {
+.employee-card-action-button:hover
+.position-card-button:hover,
+.position-card-action-button:hover {
     transform: scale(103%);
 }

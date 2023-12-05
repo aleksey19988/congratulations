@@ -1,0 +1,25 @@
+.position-data {
+    font-size: 28px;
+}
+
+.data-section-name {
+    font-family: JostMedium;
+}
+
+.delete-position-button {
+    background-color: var(--main-red-color);
+    border-radius: var(--main-border-radius);
+}
+
+.edit-position-button {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+}
+
+.action-button {
+    transition: all ease .2s;
+}
+
+.action-button:hover {
+    transform: scale(103%);
+}

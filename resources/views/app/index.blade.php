@@ -13,8 +13,8 @@
             <a href="{{ route('manual-congratulations.index') }}" class="section-container flex justify-center items-center">
                 <p>Поздравить вручную</p>
             </a>
-            <a href="{{ route('employees.index') }}" class="section-container flex justify-center items-center">
-                <p>Сотрудники</p>
+            <a href="{{ route('administrative.index') }}" class="section-container flex justify-center items-center">
+                <p>Сотрудники и их должности</p>
             </a>
             <a href="{{ route('mail-templates.index') }}" class="section-container flex justify-center items-center">
                 <p>Шаблоны поздравлений</p>

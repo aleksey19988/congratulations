@@ -1,6 +1,11 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto">
+        <div class="go-back-button-container py-5">
+            <a href="{{ url()->previous() }}">
+                <button class="go-back-button py-1 px-5">Назад</button>
+            </a>
+        </div>
         <div class="section-header-container flex flex-col items-center py-16">
             <div class="section-name">Сотрудники</div>
             <a href="{{ route('employees.create') }}" class="add-new-record-button py-1 flex justify-center w-3/12 mt-3">Добавить сотрудника</a>

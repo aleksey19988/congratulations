@@ -1,0 +1,50 @@
+.section-header-container {
+    font-size: 32px;
+    font-family: JostMedium;
+}
+
+.add-new-position-button {
+    border-radius: var(--main-border-radius);
+    font-size: 24px;
+    background-color: var(--main-green-color);
+    transition: all ease .2s;
+}
+
+.header-position-card,
+.position-card {
+    background-color: var(--main-light-color);
+    border-radius: var(--main-border-radius);
+    font-size: 24px;
+    transition: all ease .2s;
+}
+
+.position-card-button {
+    font-size: 19px;
+    background-color: var(--main-dark-color);
+    border-radius: var(--main-border-radius);
+    transition: all ease .2s;
+}
+
+.position-card-action-button {
+    background-color: var(--main-dark-color);
+    border-radius: var(--main-border-radius);
+    transition: all ease .2s;
+}
+
+.delete-position-button {
+    background-color: var(--main-red-color);
+    border-radius: var(--main-border-radius);
+}
+
+.position-card-action-button img {
+    width: 50%;
+}
+
+.info-message-container {
+    border-radius: var(--main-border-radius);
+    background-color: var(--main-green-color);
+}
+
+.info-message-text {
+    font-size: 22px;
+}

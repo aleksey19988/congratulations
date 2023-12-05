@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CongratulationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MailLogController;
 use App\Http\Controllers\MailTemplateController;
 use App\Http\Controllers\ManualCongratulationController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/', [AppController::class, 'index'])->name('app.index');
     Route::resource('employees', EmployeeController::class);
+    Route::resource('positions', PositionController::class);
     Route::resource('mail-templates', MailTemplateController::class);
+
+    Route::get('administrative-services', [AdministrativeController::class, 'index'])->name('administrative.index');
 
     Route::get('/send-congratulation/{employeeId}', [CongratulationController::class, 'send'])->name('congratulations.send');
 
