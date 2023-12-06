@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property string $subject
  * @property string $body
+ *
+ * @property MailLog $mailLog
  */
 class MailTemplate extends Model
 {

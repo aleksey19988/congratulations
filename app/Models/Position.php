@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property int $id
  * @property string $name
- * @property int $created_at
- * @property int $updated_at
- * @property int $deleted_at
  */
 class Position extends Model
 {

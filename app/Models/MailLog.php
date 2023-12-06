@@ -5,6 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property bool $is_send_success
+ * @property string $error_message
+ *
+ * @property Employee $employee
+ * @property MailTemplate $mailTemplate
+ */
 class MailLog extends Model
 {
     use HasFactory;
