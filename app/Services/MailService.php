@@ -13,29 +13,28 @@ class MailService
     private Employee $employee;
     private MailTemplate $mailTemplate;
     private string $companyName;
-    public function __construct(Employee $employee, MailTemplate $mailTemplate, array $validatedData)
+    public function __construct(Employee $employee, MailTemplate $mailTemplate, string $companyName)
     {
         $this->employee = $employee;
         $this->mailTemplate = $mailTemplate;
-
-        isset($validatedData['employee_id'])
-            ? $this->employee = Employee::query()->findOrFail($validatedData['employee_id'])
-            : throw new \InvalidArgumentException('Не передан id шаблона поздравления');
-
-        isset($validatedData['mail_template_id'])
-            ? $this->mailTemplate = MailTemplate::findOrFail($validatedData['mail_template_id'])
-            : throw new \InvalidArgumentException('Не передан id шаблона поздравления');
-
-        isset($validatedData['company_name'])
-            ? $this->companyName = $validatedData['company_name']
-            : throw new \InvalidArgumentException('Не передан id шаблона поздравления');
+        $this->companyName = $companyName;
     }
 
+    /**
+     * Получение темы и тела письма с реальными данными для отправки
+     *
+     * @return array
+     */
     public function getSubstitutedData(): array
     {
         return $this->replacePlugs();
     }
 
+    /**
+     * Замена заглушек из шаблона на реальные значения
+     *
+     * @return array
+     */
     private function replacePlugs(): array
     {
         $mailBodyWithCompanyName = str_replace(self::COMPANY_NAME_PLUG, $this->companyName, $this->mailTemplate->body);

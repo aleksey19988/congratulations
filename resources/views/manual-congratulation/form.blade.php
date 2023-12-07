@@ -8,6 +8,11 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
+        @if(session('message'))
+            <div class="info-message-container p-5 my-5">
+                <span class="info-message-text text-white">{{session('message')}}</span>
+            </div>
+        @endif
         <div class="form-container flex flex-col items-center">
             <div class="section-header-container flex justify-center py-16">
                 <div class="section-name">Ручная отправка поздравления</div>
