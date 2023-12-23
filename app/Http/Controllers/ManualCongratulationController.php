@@ -6,6 +6,7 @@ use App\Http\Requests\ManualCongratulationRequest;
 use App\Mail\CongratulationMailer;
 use App\Models\Employee;
 use App\Models\forms\ManualCongratulationForm;
+use App\Models\MailLog;
 use App\Models\MailTemplate;
 use App\Services\MailService;
 use Illuminate\Support\Facades\Mail;
@@ -32,17 +33,31 @@ class ManualCongratulationController extends Controller
         $this->validateDataForSend($dataForSend);
 
         // 2. Отправка письма
-        $sendMailResult = Mail::to($dataForSend['employee'])
-            ->locale('ru')
-            ->send(new CongratulationMailer(
-                $dataForSend['employee']->first_name,
-                $dataForSend['subject'],
-                $dataForSend['body']
-            )
-        );
-        if ($sendMailResult) {
+        try {
+            Mail::to($dataForSend['employee'])
+                ->locale('ru')
+                ->send(new CongratulationMailer(
+                        $dataForSend['employee']->first_name,
+                        $dataForSend['subject'],
+                        $dataForSend['body']
+                    )
+                );
+
+            MailLog::query()->create([
+                'employee_id' => $dataForSend['employee']->id,
+                'mail_template_id' => $dataForSend['mailTemplate']->id,
+                'is_send_success' => true,
+            ]);
+
             return back()->with('message', 'Письмо успешно отправлено. Подробнее в разделе "Отправленные поздравления".');
-        } else {
+        } catch (\Exception $e) {
+            MailLog::query()->create([
+                'employee_id' => $dataForSend['employee']->id,
+                'mail_template_id' => $dataForSend['mailTemplate']->id,
+                'is_send_success' => true,
+                'error_message' => $e->getMessage(),
+            ]);
+
             return back()->with('message', 'Ошибка при отправке письма. Попробуйте снова чуть позже.');
         }
     }

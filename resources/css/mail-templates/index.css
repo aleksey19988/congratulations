@@ -49,3 +49,10 @@
 .info-message-text {
     font-size: 22px;
 }
+
+.info-message {
+    background-color: var(--main-red-color);
+    border-radius: var(--main-border-radius);
+    font-size: 24px;
+    transition: all ease .2s;
+}

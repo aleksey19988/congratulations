@@ -7,8 +7,8 @@ use App\Models\MailTemplate;
 
 class MailService
 {
-    private const EMPLOYEE_NAME_PLUG = '[именинник]';
-    private const COMPANY_NAME_PLUG = '[имя компании]';
+    public const EMPLOYEE_NAME_PLUG = '[именинник]';
+    public const COMPANY_NAME_PLUG = '[имя компании]';
 
     private Employee $employee;
     private MailTemplate $mailTemplate;
@@ -27,7 +27,7 @@ class MailService
      */
     public function getSubstitutedData(): array
     {
-        return $this->replacePlugs();
+        return array_merge($this->replacePlugs(), ['mailTemplate' => $this->mailTemplate]);
     }
 
     /**

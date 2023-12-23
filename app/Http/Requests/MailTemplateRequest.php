@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MailTemplateBody;
+use App\Rules\MailTemplateSubject;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MailTemplateRequest extends FormRequest
@@ -22,8 +24,8 @@ class MailTemplateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'subject' => ['required', 'string', 'max:255'],
-            'body' => ['required', 'string', 'min:10'],
+            'subject' => ['required', 'string', 'max:255', new MailTemplateSubject],
+            'body' => ['required', 'string', 'min:10', new MailTemplateBody],
         ];
     }
 

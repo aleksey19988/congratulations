@@ -46,13 +46,14 @@
                         @endif
                     </div>
                     @if ($employee->mailLog)
-                        <a href="#" class="button py-1.5 flex justify-center items-center flex-col">
+                        <a href="{{ route('mail-log.index') }}" class="button py-1.5 flex justify-center items-center flex-col">
                             Подробнее
                         </a>
                     @else
-                        <a href="{{ route('congratulations.send', $employee->id) }}" class="button py-1.5 congratulate flex justify-center items-center flex-col">
-                            Поздравить сейчас
-                        </a>
+                        <?php //@todo Реализовать отображение кнопки и отправку поздравления вручную?>
+{{--                        <a href="{{ route('congratulations.send', $employee->id) }}" class="button py-1.5 congratulate flex justify-center items-center flex-col">--}}
+{{--                            Поздравить сейчас--}}
+{{--                        </a>--}}
                     @endif
                 </div>
             @endforeach

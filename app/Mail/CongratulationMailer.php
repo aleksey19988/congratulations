@@ -23,7 +23,7 @@ class CongratulationMailer extends Mailable
     public function __construct(string $employeeName, string $subject, string $body)
     {
         $this->employeeName = $employeeName;
-        $this->subject = 'test theme / Тестовая тема';
+        $this->subject = $subject;
         $this->body = $body;
     }
 

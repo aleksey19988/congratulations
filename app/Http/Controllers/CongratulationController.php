@@ -9,6 +9,6 @@ class CongratulationController extends Controller
     public function send(string $employeeId)
     {
         $employee = Employee::query()->findOrFail($employeeId);
-        //@todo Реализовать отправку поздравления по нажатию на "Поздравить" в списке именинников
+        //@todo Реализовать отправку поздравления по нажатию на "Поздравить сейчас" в списке именинников
     }
 }

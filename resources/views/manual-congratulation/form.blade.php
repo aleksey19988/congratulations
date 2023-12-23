@@ -39,7 +39,12 @@
                                 class="input-field w-96 h-12 p-3 block border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
                             @foreach($mailTemplates as $mailTemplate)
-                                <option value="{{ $mailTemplate->id }}">{{ $mailTemplate->body }}</option>
+                                <option
+                                    value="{{ $mailTemplate->id }}"
+                                    @if($mailTemplate->id == old('mail_template_id')){{ 'selected' }} @endif
+                                >
+                                    {{ $mailTemplate->body }}
+                                </option>
                             @endforeach
                         </select>
                         @error('mail_template_id')

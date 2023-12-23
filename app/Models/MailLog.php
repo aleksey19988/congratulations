@@ -16,6 +16,12 @@ class MailLog extends Model
 {
     use HasFactory;
     protected $table = 'mail_log';
+    protected $fillable = [
+        'employee_id',
+        'mail_template_id',
+        'is_send_success',
+        'error_message',
+    ];
 
     public function employee(): \Illuminate\Database\Eloquent\Relations\HasOne
     {

@@ -1,3 +1,4 @@
+@php use App\Services\MailService; @endphp
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto">
@@ -7,9 +8,10 @@
             </a>
         </div>
         <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center py-16">
+            <div class="section-header-container flex justify-center pt-16">
                 <div class="section-name">Добавление шаблона поздравления</div>
             </div>
+            @include('mail-templates.info-message')
             <div class="add-mail-template-form-container">
                 <form action="{{ route('mail-templates.store') }}" method="POST"
                       class="add-mail-template-form flex w-96 flex-col">
@@ -19,13 +21,14 @@
                         name="subject"
                         class="@error('subject') border-2 border-rose-500 @enderror input-field m-3 p-3"
                         placeholder="Тема"
-                        value="{{ old('subject') }}"
+                        value="{{ old('subject') ?? MailService::EMPLOYEE_NAME_PLUG }}"
                     >
                     @error('subject')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror
                     <textarea class="@error('body') border-2 border-rose-500 @enderror input-field m-3 p-3 resize-none"
-                              name="body" placeholder="Текст поздравления" rows="15">{{ old('body') }}</textarea>
+                              name="body" placeholder="Текст поздравления"
+                              rows="15">{{ old('body') ?? MailService::COMPANY_NAME_PLUG }}</textarea>
                     @error('body')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror

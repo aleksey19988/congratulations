@@ -11,9 +11,10 @@
             </a>
         </div>
         <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center py-16">
+            <div class="section-header-container flex justify-center pt-16">
                 <div class="section-name">Редактирование шаблона поздравления</div>
             </div>
+            @include('mail-templates.info-message')
             <div class="add-mail-template-form-container">
                 <form action="{{ route('mail-templates.update', $mailTemplate) }}" method="POST"
                       class="add-mail-template-form flex w-96 flex-col">
