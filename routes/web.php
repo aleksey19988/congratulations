@@ -27,7 +27,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('cron/send-emails', [CronController::class, 'sendEmails'])->name('cron.send-emails');
+Route::middleware('auth_api')->get('cron/send-emails', [CronController::class, 'sendEmails'])->name('cron.send-emails');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
