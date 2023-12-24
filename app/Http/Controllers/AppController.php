@@ -21,7 +21,7 @@ class AppController extends Controller
         return view('app.index', compact('birthdayPeople'));
     }
 
-    private function getBirthdayEmployees(Collection $employees)
+    public function getBirthdayEmployees(Collection $employees)
     {
         $today = Carbon::today();
         return $employees->reduce(function(Collection $employees, Employee $employee) use ($today) {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministrativeController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CongratulationController;
+use App\Http\Controllers\Cron\CronController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MailLogController;
 use App\Http\Controllers\MailTemplateController;
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('cron/send-emails', [CronController::class, 'sendEmails'])->name('cron.send-emails');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -51,9 +54,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('mail-log', [MailLogController::class, 'index'])->name('mail-log.index');
 });
-
-
-
-
 
 require __DIR__.'/auth.php';
