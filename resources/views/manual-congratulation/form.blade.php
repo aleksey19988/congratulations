@@ -8,6 +8,11 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
+        <div class="go-back-button-container py-5">
+            <a href="{{ route('app.index') }}">
+                <button class="go-back-button py-1 px-5">Назад</button>
+            </a>
+        </div>
         @if(session('message'))
             <div class="info-message-container p-5 my-5">
                 <span class="info-message-text text-white">{{session('message')}}</span>

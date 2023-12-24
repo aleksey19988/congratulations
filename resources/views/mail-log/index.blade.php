@@ -5,6 +5,11 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto">
+        <div class="go-back-button-container py-5">
+            <a href="{{ route('app.index') }}">
+                <button class="go-back-button py-1 px-5">Назад</button>
+            </a>
+        </div>
         <div class="section-header-container flex flex-col items-center py-16">
             <div class="section-name">Отправленные поздравления</div>
         </div>
@@ -27,7 +32,7 @@
                         <span class="header-mail-log-card-body">Дата и время</span>
                     </div>
                     <div class="header-mail-log-card-body-container flex items-center">
-                        <span class="header-mail-log-card-body">Статус отправки</span>
+                        <span class="header-mail-log-card-body">Статус</span>
                     </div>
                 </div>
                 @foreach($mailLog as $record)

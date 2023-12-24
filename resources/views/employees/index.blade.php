@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto">
         <div class="go-back-button-container py-5">
-            <a href="{{ url()->previous() }}">
+            <a href="{{ route('administrative.index') }}">
                 <button class="go-back-button py-1 px-5">Назад</button>
             </a>
         </div>
@@ -46,7 +46,7 @@
                                 <div class="employee-card-congratulations-datetime">
                                     Поздравили <span class="">{{ \Carbon\Carbon::make($employee->mailLog->created_at)->format('d.m.Y в H:i') }}</span>
                                 </div>
-                                <a href="#" class="employee-card-button details text-center mt-2 py-1 w-3/5">
+                                <a href="{{ route('mail-log.index') }}" class="employee-card-button details text-center mt-2 py-1 w-3/5">
                                     Подробнее
                                 </a>
                             </div>

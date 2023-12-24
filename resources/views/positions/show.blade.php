@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto">
         <div class="go-back-button-container py-5">
-            <a href="{{ url()->previous() }}">
+            <a href="{{ route('positions.index') }}">
                 <button class="go-back-button py-1 px-5">Назад</button>
             </a>
         </div>
