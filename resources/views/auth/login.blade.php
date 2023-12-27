@@ -8,7 +8,7 @@
         <div class="w-full">
 {{--            <x-input-label for="email" :value="__('Email')" />--}}
             <label for="email">
-                <input id="email" class="block mt-1 w-full login-email-input text-center" type="email" name="email"
+                <x-text-input id="email" class="block mt-1 w-full login-email-input text-center" type="email" name="email"
                        value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="Электропочта"/>
             </label>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -18,7 +18,7 @@
         <div class="mt-4 w-full">
 {{--            <x-input-label for="password" :value="__('Password')" />--}}
             <label for="password">
-                <input id="password" class="block mt-1 w-full text-center"
+                <x-text-input id="password" class="block mt-1 w-full text-center"
                        type="password"
                        name="password"
                        required autocomplete="current-password"
@@ -42,7 +42,7 @@
 {{--                </a>--}}
 {{--            @endif--}}
 
-            <x-primary-button class="w-full justify-center send-form-button" id="send-form-button">
+            <x-primary-button class="w-full justify-center">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
