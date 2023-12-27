@@ -1,10 +1,20 @@
 {
     "Password": "Пароль",
-    "Confirm Password": "Повторите пароль",
+    "Confirm Password": "Пароль ещё раз",
     "Already registered?": "Уже зарегистрированы?",
     "Register": "Зарегистрироваться",
     "Remember me": "Запомнить меня",
     "Forgot your password?": "Забыли пароль?",
     "Log in": "Войти",
-    "Name": "Имя"
+    "Name": "Имя",
+    "Profile": "Профиль",
+    "Profile Information": "Информация",
+    "Update your account's profile information and email address.": "Здесь ты можешь обновить свои имя и email",
+    "Save": "Сохранить",
+    "Update Password": "Обновление пароля",
+    "Ensure your account is using a long, random password to stay secure.": "Сложный пароль — залог безопасности",
+    "Current Password": "Текущий пароль",
+    "New Password": "Новый пароль",
+    "Delete Account": "Удалить учётную запись",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Как только учётная запись будет удалена, удалятся все связанные с ней данные. Перед удалением убедись, что всё нужное — сохранено!"
 }
