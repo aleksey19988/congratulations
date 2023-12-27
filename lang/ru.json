@@ -16,5 +16,6 @@
     "Current Password": "Текущий пароль",
     "New Password": "Новый пароль",
     "Delete Account": "Удалить учётную запись",
-    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Как только учётная запись будет удалена, удалятся все связанные с ней данные. Перед удалением убедись, что всё нужное — сохранено!"
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Как только учётная запись будет удалена, удалятся все связанные с ней данные. Перед удалением убедись, что всё нужное — сохранено!",
+    "Saved.": "Сохранено"
 }
