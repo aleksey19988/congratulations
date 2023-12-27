@@ -1,12 +1,18 @@
-name: Test Workflow
-on: workflow_dispatch
+name: Deploy to hosting
+on:
+  push:
+    branches:
+      - main
 jobs:
-  print:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Print to console
-        run: echo Hello github actions
-      - name: Print a few lines
-        run: |
-          echo First line!
-          echo Second line!
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
