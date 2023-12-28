@@ -13,13 +13,13 @@
             <div class="add-position-form-container">
                 <form action="{{ route('positions.store') }}" method="post" class="add-position-form flex flex-col">
                     @csrf
-                    <input
+                    <x-text-input
                         type="text"
                         name="name"
                         class="@error('name') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
                         placeholder="Наименование должности"
                         value="{{ old('name') }}"
-                    >
+                    ></x-text-input>
                     @error('name')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror

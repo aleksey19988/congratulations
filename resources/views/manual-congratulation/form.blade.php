@@ -57,13 +57,13 @@
                         @enderror
                     </div>
                     <div class="m-3">
-                        <input
+                        <x-text-input
                             type="text"
                             name="company_name"
                             class="@error('company_name') border-2 border-rose-500 @enderror input-field my-3 w-96 p-3"
                             placeholder="Имя компании"
                             value="{{ old('company_name') }}"
-                        >
+                        ></x-text-input>
                         @error('company_name')
                         <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                         @enderror

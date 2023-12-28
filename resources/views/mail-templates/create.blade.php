@@ -16,13 +16,13 @@
                 <form action="{{ route('mail-templates.store') }}" method="POST"
                       class="add-mail-template-form flex w-96 flex-col">
                     @csrf
-                    <input
+                    <x-text-input
                         type="text"
                         name="subject"
                         class="@error('subject') border-2 border-rose-500 @enderror input-field m-3 p-3"
                         placeholder="Тема"
                         value="{{ old('subject') ?? MailService::EMPLOYEE_NAME_PLUG }}"
-                    >
+                    ></x-text-input>
                     @error('subject')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror

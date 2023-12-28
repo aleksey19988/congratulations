@@ -16,53 +16,53 @@
             <div class="add-employee-form-container">
                 <form action="{{ route('employees.store') }}" method="post" class="add-employee-form flex flex-col">
                     @csrf
-                    <input
+                    <x-text-input
                         type="text"
                         name="first_name"
                         class="@error('first_name') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
                         placeholder="Имя"
                         value="{{ old('first_name') }}"
-                    >
+                    ></x-text-input>
                     @error('first_name')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror
-                    <input
+                    <x-text-input
                         type="text"
                         name="last_name"
                         class="@error('last_name') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
                         placeholder="Фамилия"
                         value="{{ old('last_name') }}"
-                    >
+                    ></x-text-input>
                     @error('last_name')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror
-                    <input
+                    <x-text-input
                         type="text"
                         name="patronymic"
                         class="@error('patronymic') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
                         placeholder="Отчество (при наличии)"
                         value="{{ old('patronymic') }}"
-                    >
+                    ></x-text-input>
                     @error('patronymic')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror
-                    <input
+                    <x-text-input
                         type="date"
                         name="birthday"
                         class="@error('birthday') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
                         placeholder="Дата рождения"
                         value="{{ old('birthday') }}"
-                    >
+                    ></x-text-input>
                     @error('birthday')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror
-                    <input
+                    <x-text-input
                         type="email"
                         name="email"
                         class="@error('email') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
                         placeholder="Электропочта"
                         value="{{ old('email') }}"
-                    >
+                    ></x-text-input>
                     @error('email')
                     <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
                     @enderror
