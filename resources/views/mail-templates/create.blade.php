@@ -16,23 +16,31 @@
                 <form action="{{ route('mail-templates.store') }}" method="POST"
                       class="add-mail-template-form flex w-96 flex-col">
                     @csrf
-                    <x-text-input
-                        type="text"
-                        name="subject"
-                        class="@error('subject') border-2 border-rose-500 @enderror input-field m-3 p-3"
-                        placeholder="Тема"
-                        value="{{ old('subject') ?? MailService::EMPLOYEE_NAME_PLUG }}"
-                    ></x-text-input>
-                    @error('subject')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <textarea class="@error('body') border-2 border-rose-500 @enderror input-field m-3 p-3 resize-none"
-                              name="body" placeholder="Текст поздравления"
-                              rows="15">{{ old('body') ?? MailService::COMPANY_NAME_PLUG }}</textarea>
-                    @error('body')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <button type="submit" class="save-add-mail-template-form-button m-3 p-3" id="form-button">Сохранить
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-text-input
+                            type="text"
+                            name="subject"
+                            class="w-96 p-3"
+                            placeholder="Тема"
+                            value="{{ old('subject') ?? MailService::EMPLOYEE_NAME_PLUG }}"
+                        ></x-text-input>
+                        <x-input-error :messages="$errors->get('subject')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-3">
+                        <x-textarea-input
+                            class="p-3 w-full resize-none"
+                            name="body"
+                            placeholder="Текст поздравления"
+                            rows="15"
+                            :value="old('body') ?? MailService::COMPANY_NAME_PLUG"
+                        ></x-textarea-input>
+                        <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                    </div>
+
+                    <button type="submit" class="save-add-mail-template-form-button m-3 p-3" id="form-button">
+                        Сохранить
                     </button>
                 </form>
             </div>

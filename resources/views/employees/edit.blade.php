@@ -22,7 +22,7 @@
                     @csrf
                     @method('PATCH')
 
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-text-input
                             type="text"
                             name="first_name"
@@ -33,7 +33,7 @@
                         <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-text-input
                             type="text"
                             name="last_name"
@@ -44,7 +44,7 @@
                         <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-text-input
                             type="text"
                             name="patronymic"
@@ -55,7 +55,7 @@
                         <x-input-error :messages="$errors->get('patronymic')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-text-input
                             type="date"
                             name="birthday"
@@ -66,7 +66,7 @@
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-text-input
                             type="email"
                             name="email"
@@ -77,7 +77,7 @@
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-select-input
                             class="w-96 p-3"
                             name="position_id"
@@ -89,8 +89,8 @@
                         </x-select-input>
                     </div>
 
-                    <button type="submit" class="save-edit-employee-form-button m-3 w-96 p-3"
-                            id="form-button">Обновить
+                    <button type="submit" class="save-edit-employee-form-button m-3 w-96 p-3" id="form-button">
+                        Обновить
                     </button>
                 </form>
             </div>
