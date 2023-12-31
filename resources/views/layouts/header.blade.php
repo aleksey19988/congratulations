@@ -6,7 +6,7 @@
     @vite('resources/css/app.css')
     <title>Congratulations</title>
 </head>
-<body class="">
+<body class="flex flex-col items-center">
 <div class="header container mx-auto grid grid-cols-4 gap-x-5 p-4">
     <div class="logo-container flex justify-center items-center">
         <a href="/">
