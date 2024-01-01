@@ -6,19 +6,11 @@
                 Сегодня {{ \Carbon\Carbon::now()->locale('ru')->translatedFormat('d F Y, l') }}
             </div>
         </div>
-        <div class="sections-container grid grid-cols-5 row-start-2 gap-x-5 pb-16">
-            <a href="{{ route('mail-log.index') }}" class="section-container flex justify-center items-center">
-                <p>Отправленные поздравления</p>
-            </a>
-            <a href="{{ route('manual-congratulations.index') }}" class="section-container flex justify-center items-center">
-                <p>Поздравить вручную</p>
-            </a>
-            <a href="{{ route('administrative.index') }}" class="section-container flex justify-center items-center">
-                <p>Сотрудники и их должности</p>
-            </a>
-            <a href="{{ route('mail-templates.index') }}" class="section-container flex justify-center items-center">
-                <p>Шаблоны поздравлений</p>
-            </a>
+        <div class="sections-container grid grid-cols-5 grid-rows-1 row-start-2 gap-5 pb-16">
+            <x-section-link :route="route('mail-log.index')" :text="'Отправленные поздравления'"></x-section-link>
+            <x-section-link :route="route('manual-congratulations.index')" :text="'Поздравить вручную'"></x-section-link>
+            <x-section-link :route="route('administrative.index')" :text="'Сотрудники и их должности'"></x-section-link>
+            <x-section-link :route="route('mail-templates.index')" :text="'Шаблоны поздравлений'"></x-section-link>
         </div>
         <div class="birthday-people-container flex flex-nowrap overflow-x-auto">
             <div class="background-text z-0 flex justify-center items-center px-5">

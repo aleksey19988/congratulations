@@ -2,9 +2,7 @@
 @section('content')
     <div class="container mx-auto ">
         <div class="go-back-button-container py-5">
-            <a href="{{ route('positions.show', $position->id) }}">
-                <button class="go-back-button py-1 px-5">Назад</button>
-            </a>
+            <x-back-link :route="route('positions.show', $position->id)" :text="'Назад'"></x-back-link>
         </div>
         <div class="form-container flex flex-col items-center">
             <div class="section-header-container flex justify-center py-16">

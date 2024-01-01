@@ -6,9 +6,7 @@
 @section('content')
     <div class="container mx-auto">
         <div class="go-back-button-container py-5">
-            <a href="{{ route('app.index') }}">
-                <button class="go-back-button py-1 px-5">Назад</button>
-            </a>
+            <x-back-link :route="route('app.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="section-header-container flex flex-col items-center py-16">
             <div class="section-name">Отправленные поздравления</div>

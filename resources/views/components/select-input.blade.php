@@ -7,7 +7,6 @@
         focus:border-indigo-500
         dark:focus:border-emerald-600
         focus:ring-emerald-600
-        dark:focus:border-emerald-600
         rounded-3xl
         shadow-sm'
 ]) !!}>
