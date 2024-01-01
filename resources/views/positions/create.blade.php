@@ -5,8 +5,8 @@
             <x-back-link :route="route('positions.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center py-16">
-                <div class="section-name">Добавление должности</div>
+            <div class="flex justify-center py-16">
+                <div class="text-3xl">Добавление должности</div>
             </div>
             <div class="add-position-form-container">
                 <form action="{{ route('positions.store') }}" method="post" class="add-position-form flex flex-col">
@@ -18,11 +18,9 @@
                         placeholder="Наименование должности"
                         value="{{ old('name') }}"
                     ></x-text-input>
-                    @error('name')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <button type="submit" class="save-add-position-form-button m-3 w-96 p-3"
-                            id="form-button">Сохранить
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    <button type="submit" class="m-3 w-96 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all" id="form-button">
+                        Сохранить
                     </button>
                 </form>
             </div>

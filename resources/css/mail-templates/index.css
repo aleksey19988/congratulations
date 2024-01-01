@@ -37,10 +37,6 @@
     transition: all ease .2s;
 }
 
-.employee-card-action-button img {
-    width: 50%;
-}
-
 .info-message-container {
     border-radius: var(--main-border-radius);
     background-color: var(--main-green-color);

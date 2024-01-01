@@ -4,7 +4,7 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto">
-        <div class="go-back-button-container py-5">
+        <div class="py-5">
             <x-back-link :route="route('employees.index')" :text="'Назад'"></x-back-link>
         </div>
         @if(session('message'))
@@ -12,55 +12,55 @@
                 <span class="info-message-text text-white">{{session('message')}}</span>
             </div>
         @endif
-        <div class="section-header-container employee-full-name-container pb-16">
-            <div class="employee-full-name">{{ $employee->getFullName() }}</div>
+        <div class="py-5">
+            <div class="text-3xl font-bold">{{ $employee->getFullName() }}</div>
         </div>
-        <div class="employee-data-container mb-16">
-            <div class="employee-data">
-                <div class="employee-data-section py-2 birthday-container">
-                    <p class="birthday">
-                        <span class="data-section-name">Дата рождения:</span> {{ \Carbon\Carbon::make($employee->birthday)->locale('ru')->translatedFormat('d F Y') }}
+        <div class="mb-16">
+            <div class="">
+                <div class="py-2">
+                    <p class="lg:text-xl">
+                        <span class="font-bold">Дата рождения:</span> {{ \Carbon\Carbon::make($employee->birthday)->locale('ru')->translatedFormat('d F Y') }}
                     </p>
                 </div>
-                <div class="employee-data-section py-2 email-container">
-                    <p class="email">
-                        <span class="data-section-name">Email:</span> {{ $employee->email }}
+                <div class="py-2">
+                    <p class="lg:text-xl">
+                        <span class="font-bold">Email:</span> {{ $employee->email }}
                     </p>
                 </div>
-                <div class="employee-data-section py-2 position-container">
-                    <p class="position">
-                        <span class="data-section-name">Должность:</span> {{ $employee->position->name }}
+                <div class="py-2">
+                    <p class="lg:text-xl">
+                        <span class="font-bold">Должность:</span> {{ $employee->position->name }}
                     </p>
                 </div>
-                <div class="employee-data-section py-2 create-date-container">
-                    <p class="create-date">
-                        <span class="data-section-name">Добавлен:</span> {{ \Carbon\Carbon::make($employee->created_at)->locale('ru')->translatedFormat('d F Y') }}
+                <div class="py-2">
+                    <p class="lg:text-xl">
+                        <span class="font-bold">Добавлен:</span> {{ \Carbon\Carbon::make($employee->created_at)->locale('ru')->translatedFormat('d F Y') }}
                     </p>
                 </div>
-                <div class="employee-data-section py-2 create-date-container">
-                    <p class="create-date">
+                <div class="py-2">
+                    <p class="lg:text-xl">
                         @if($employee->mailLog)
-                            <span class="data-section-name">Поздравляли:</span> {{ \Carbon\Carbon::make($employee->mailLog->created_at)->locale('ru')->translatedFormat('d F Y') }}
+                            <span class="font-bold">Поздравляли:</span> {{ \Carbon\Carbon::make($employee->mailLog->created_at)->locale('ru')->translatedFormat('d F Y') }}
                         @else
-                            <span class="data-section-name">Ещё не поздравляли</span>
+                            <span class="font-bold">Ещё не поздравляли</span>
                         @endif
                     </p>
                 </div>
             </div>
         </div>
-        <div class="action-buttons flex">
-            <div class="edit-profile-button-container">
-                <a href="{{ route('employees.edit', $employee->id) }}" class="edit-profile-button action-button flex justify-center items-center py-1 px-5">
-                    <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать профиль" class="button-icon">
+        <div class="flex">
+            <div class="">
+                <a href="{{ route('employees.edit', $employee->id) }}" class="flex justify-center items-center py-1 px-5 bg-slate-700 rounded-3xl hover:scale-105 transition-all">
+                    <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать профиль" class="">
                 </a>
             </div>
-            <div class="delete-profile-button-container">
+            <div class="">
                 <form action="{{ route('employees.destroy', $employee->id) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type="submit">
-                        <a href="" class="delete-profile-button action-button flex justify-center items-center py-1 px-5 ml-3">
-                            <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="button-icon">
+                        <a href="" class="flex justify-center items-center py-1 px-5 ml-3 bg-red-500 rounded-3xl hover:scale-105 transition-all">
+                            <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="">
                         </a>
                     </button>
                 </form>

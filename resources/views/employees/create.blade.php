@@ -4,15 +4,15 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
-        <div class="go-back-button-container py-5">
+        <div class="py-5">
             <x-back-link :route="route('employees.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center py-16">
-                <div class="section-name">Добавление сотрудника</div>
+            <div class="flex justify-center py-16">
+                <div class="text-3xl">Добавление сотрудника</div>
             </div>
-            <div class="add-employee-form-container">
-                <form action="{{ route('employees.store') }}" method="post" class="add-employee-form flex flex-col items-center">
+            <div class="">
+                <form action="{{ route('employees.store') }}" method="post" class="flex flex-col items-center">
                     @csrf
 
                     <div class="mb-3 flex justify-center flex-col">
@@ -79,7 +79,7 @@
                         >
                         </x-select-input>
                     </div>
-                    <button type="submit" class="save-add-employee-form-button m-3 w-96 p-3" id="form-button">
+                    <button type="submit" class="m-3 w-96 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all" id="form-button">
                         Сохранить
                     </button>
                 </form>

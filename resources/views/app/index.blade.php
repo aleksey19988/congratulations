@@ -3,7 +3,7 @@
     <div class="container mx-auto ">
         <div class="datetime-container flex items-center justify-center col-span-2 py-16">
             <div class="date-time">
-                Сегодня {{ \Carbon\Carbon::now()->locale('ru')->translatedFormat('d F Y, l') }}
+                Сегодня {{ \Carbon\Carbon::now()->locale('ru')->translatedFormat('j F Y, l') }}
             </div>
         </div>
         <div class="sections-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 sm:grid-rows-1 row-start-2 gap-5 pb-16">

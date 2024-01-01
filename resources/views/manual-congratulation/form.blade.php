@@ -1,27 +1,28 @@
 @php
-/**
- * @var App\Models\forms\ManualCongratulationForm $form
- * @var \Illuminate\Support\Collection $employees
- * @var \Illuminate\Support\Collection $mailTemplates
- */
+    /**
+     * @var App\Models\forms\ManualCongratulationForm $form
+     * @var \Illuminate\Support\Collection $employees
+     * @var \Illuminate\Support\Collection $mailTemplates
+     */
 @endphp
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
-        <div class="go-back-button-container py-5">
+        <div class="py-5">
             <x-back-link :route="route('app.index')" :text="'Назад'"></x-back-link>
         </div>
         @if(session('message'))
-            <div class="info-message-container p-5 my-5">
+            <div class="p-5 my-5">
                 <span class="info-message-text text-white">{{session('message')}}</span>
             </div>
         @endif
-        <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center py-16">
-                <div class="section-name">Ручная отправка поздравления</div>
+        <div class="flex flex-col items-center">
+            <div class="flex justify-center py-16">
+                <div class="text-3xl font-bold">Ручная отправка поздравления</div>
             </div>
-            <div class="manual-congratulation-form-container">
-                <form action="{{ route('manual-congratulations.send') }}" method="post" class="add-employee-form flex flex-col">
+            <div class="">
+                <form action="{{ route('manual-congratulations.send') }}" method="post"
+                      class="flex flex-col">
                     @csrf
 
                     <div class="mb-3 flex justify-center flex-col">
@@ -30,6 +31,9 @@
                             id="employee_id"
                             name="employee_id"
                             class="
+                                w-full
+                                md:w-3/4
+                                lg:w-1/2
                                 border-gray-300
                                 dark:border-gray-700
                                 dark:bg-gray-900
@@ -42,10 +46,12 @@
                             ">
                             @php /** @var \App\Models\Employee $employee */ @endphp
                             @foreach($employees as $employee)
-                                <option value="{{ $employee->id }}">{{ $employee->getFullName() }} ({{ $employee->position->name }})</option>
+                                <option value="{{ $employee->id }}">{{ $employee->getFullName() }}
+                                    ({{ $employee->position->name }})
+                                </option>
                             @endforeach
                         </select>
-                        <x-input-error :messages="$errors->get('employee_id')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('employee_id')" class="mt-2"/>
                     </div>
 
                     <div class="mb-3 flex justify-center flex-col">
@@ -55,6 +61,8 @@
                             name="mail_template_id"
                             class="
                                 w-full
+                                md:w-3/4
+                                lg:w-1/2
                                 border-gray-300
                                 dark:border-gray-700
                                 dark:bg-gray-900
@@ -66,16 +74,18 @@
                                 shadow-sm
                             ">
                             @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
-                                @foreach($mailTemplates as $mailTemplate)
-                                    <option
-                                        value="{{ $mailTemplate->id }}"
-                                        @if($mailTemplate->id == old('mail_template_id')){{ 'selected' }} @endif
-                                    >
-                                        {{ $mailTemplate->body }}
-                                    </option>
-                                @endforeach
+                            @foreach($mailTemplates as $mailTemplate)
+                                <option
+                                    value="{{ $mailTemplate->id }}"
+                                @if($mailTemplate->id == old('mail_template_id'))
+                                    {{ 'selected' }}
+                                    @endif
+                                >
+                                    {{ $mailTemplate->body }}
+                                </option>
+                            @endforeach
                         </select>
-                        <x-input-error :messages="$errors->get('mail_template_id')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('mail_template_id')" class="mt-2"/>
                     </div>
                     <div class="mb-3 flex justify-center flex-col">
                         <label for="company_name_id">Имя компании</label>
@@ -83,13 +93,20 @@
                             type="text"
                             id="company_name_id"
                             name="company_name"
-                            class="p-3"
+                            class="
+                                p-3
+                                w-full
+                                md:w-3/4
+                                lg:w-1/2"
                             placeholder="Имя компании"
                             value="{{ old('company_name') }}"
                         ></x-text-input>
-                        <x-input-error :messages="$errors->get('company_name')" class="mt-2" />
+                        <x-input-error :messages="$errors->get('company_name')" class="mt-2"/>
                     </div>
-                    <button type="submit" class="send-manual-congratulation-form-button my-3 w-96 p-3" id="form-button">
+                    <button
+                        type="submit"
+                        class=" w-full md:w-3/4 lg:w-1/2 my-3 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all"
+                        id="form-button">
                         Отправить
                     </button>
                 </form>

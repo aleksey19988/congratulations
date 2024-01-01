@@ -2,14 +2,6 @@
 
 @import url('mail-log/index.css');
 
-@import url('employees/index.css');
-@import url('employees/create.css');
-@import url('employees/show.css');
-
-@import url('positions/index.css');
-@import url('positions/create.css');
-@import url('positions/show.css');
-
 @import url('mail-templates/index.css');
 @import url('mail-templates/show.css');
 
@@ -106,13 +98,6 @@ body {
     font-family: "JostRegular", sans-serif;
 }
 
-.section-container:hover {
-    transform: scale(103%);
-}
-
-.birthday-people-container {
-
-}
 
 .birthday-people-card > .full-name-container {
     font-size: 20px;
