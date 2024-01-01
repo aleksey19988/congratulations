@@ -6,26 +6,38 @@
     @vite('resources/css/app.css')
     <title>Congratulations</title>
 </head>
-<body class="flex flex-col items-center bg-slate-950">
-<div class="container mx-auto grid grid-cols-4 gap-x-5 p-4 bg-slate-700 rounded-3xl">
-    <div class="flex justify-center items-center bg-slate-950 rounded-3xl p-5">
+<body class="flex flex-col items-center bg-slate-950 text-white py-5 px-10 mb-20">
+<div class="
+    container
+    mx-auto
+    grid
+    grid-cols-1
+    gap-2
+    md:grid-cols-3
+    lg:grid-cols-4
+    xl:grid-cols-6
+    gap-x-5
+    p-4
+    bg-slate-700
+    rounded-3xl
+">
+    <div class="flex justify-center items-center bg-slate-950 rounded-3xl p-5 col-end-2">
         <a href="/">
-            <img class="logo-img" src="{{ asset('img/logo.svg') }}" alt="Логотип">
+            <img class="logo-img xl:h-10" src="{{ asset('img/logo.svg') }}" alt="Логотип">
         </a>
     </div>
-    <div class="grid grid-cols-2 gap-x-7 col-start-4 bg-slate-950 rounded-3xl p-5">
-        <div class="profile-container flex justify-center items-center">
-            <span class="user-name">{{ Auth::user() ? Auth::user()->name : 'Неизвестный пользователь' }}</span>
-        </div>
-        <div class="buttons-container grid grid-rows-4 grid-cols-2 gap-2">
-            <a href="{{ route('profile.edit') }}" class="profile-button header-action-button row-span-2 col-span-2 flex justify-center items-center">
-                <img src="{{ asset('icons/profile.svg') }}" alt="Профиль">
+    <div class="grid grid-cols-2 gap-x-7 md:col-start-3 lg:col-start-4 xl:col-start-6 bg-slate-950 rounded-3xl p-5 xl:py-2">
+        <div class="flex justify-center items-center">
+            <a href="{{ route('profile.edit') }}" class="profile-button header-action-button flex justify-center items-center xl:h-8 w-full">
+                <img class="h-full xl:h-5" src="{{ asset('icons/profile.svg') }}" alt="Профиль">
             </a>
-            <form action="{{ route('logout') }}" method="post" class="row-span-2 col-span-2">
+        </div>
+        <div class="flex justify-center items-center">
+            <form action="{{ route('logout') }}" method="post" class="xl:h-8 w-full">
                 @csrf
                 @method('POST')
-                <button type="submit" class="logout-button header-action-button flex justify-center items-center w-full">
-                    <img src="{{ asset('icons/logout.svg') }}" alt="Выйти">
+                <button type="submit" class="logout-button header-action-button flex justify-center items-center w-full h-full">
+                    <img class="h-full xl:h-5" src="{{ asset('icons/logout.svg') }}" alt="Выйти">
                 </button>
             </form>
         </div>
