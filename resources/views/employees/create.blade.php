@@ -12,7 +12,7 @@
                 <div class="section-name">Добавление сотрудника</div>
             </div>
             <div class="add-employee-form-container">
-                <form action="{{ route('employees.store') }}" method="post" class="add-employee-form flex flex-col">
+                <form action="{{ route('employees.store') }}" method="post" class="add-employee-form flex flex-col items-center">
                     @csrf
 
                     <div class="mb-3 flex justify-center flex-col">

@@ -6,25 +6,25 @@
                 Сегодня {{ \Carbon\Carbon::now()->locale('ru')->translatedFormat('d F Y, l') }}
             </div>
         </div>
-        <div class="sections-container grid grid-cols-5 grid-rows-1 row-start-2 gap-5 pb-16">
+        <div class="sections-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 sm:grid-rows-1 row-start-2 gap-5 pb-16">
             <x-section-link :route="route('mail-log.index')" :text="'Отправленные поздравления'"></x-section-link>
             <x-section-link :route="route('manual-congratulations.index')" :text="'Поздравить вручную'"></x-section-link>
             <x-section-link :route="route('administrative.index')" :text="'Сотрудники и их должности'"></x-section-link>
             <x-section-link :route="route('mail-templates.index')" :text="'Шаблоны поздравлений'"></x-section-link>
         </div>
-        <div class="flex flex-nowrap overflow-x-auto bg-slate-700 rounded-3xl h-48">
-            <div class="background-text z-0 flex justify-center items-center px-5">
+        <div class="birthday-people-container flex flex-nowrap items-center overflow-x-auto bg-slate-700 rounded-3xl h-48 py-2 px-5 relative scroll-smooth">
+            <div class="background-text flex justify-center items-center z-0 absolute ml-auto mr-auto left-0 right-0 text-center w-11/12">
                 @if($birthdayPeople->count() > 0)
-                    <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="">
+                    <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="Именинники">
                 @else
-                    <img src="{{ asset('icons/without-birthday-people-background-text.svg') }}" alt="">
+                    <img src="{{ asset('icons/without-birthday-people-background-text.svg') }}" alt="Сегодня без именинников">
                 @endif
             </div>
             @php /** @var \App\Models\Employee $employee */ @endphp
             @foreach($birthdayPeople as $employee)
-                <div class="birthday-people-card px-10 min-w-[22%] flex justify-around items-center flex-col mx-2 z-10">
+                <div class="birthday-people-card px-10 min-w-[60%] xl:min-w-[22%] h-full flex justify-around items-center flex-col mx-2 z-10 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                     <div class="full-name-container">
-                    <span class="full-name">{{ $employee->getFullName() }}</span>
+                        <span class="full-name">{{ $employee->getFullName() }}</span>
                     </div>
                     <div class="congratulations-datetime-container">
                         @if ($employee->mailLog)

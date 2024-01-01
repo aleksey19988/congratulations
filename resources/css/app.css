@@ -111,28 +111,8 @@ body {
 }
 
 .birthday-people-container {
-    background-color: var(--main-light-color);
-    border-radius: var(--main-border-radius);
-    padding: 10px;
-    position: relative;
-    min-height: 200px;
-}
 
-.birthday-people-container > .background-text{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
-
-.birthday-people-card {
-    background-color: var(--main-dark-color);
-    border-radius: var(--main-border-radius);
-    height: 200px;
-    transition: all ease .2s;
-}
-
 
 .birthday-people-card > .full-name-container {
     font-size: 20px;

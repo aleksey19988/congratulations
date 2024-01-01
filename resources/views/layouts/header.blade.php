@@ -28,7 +28,7 @@
     </div>
     <div class="grid grid-cols-2 gap-x-7 md:col-start-3 lg:col-start-4 xl:col-start-6 bg-slate-950 rounded-3xl p-5 xl:py-2">
         <div class="flex justify-center items-center">
-            <a href="{{ route('profile.edit') }}" class="profile-button header-action-button flex justify-center items-center xl:h-8 w-full">
+            <a href="{{ route('profile.edit') }}" class="flex justify-center items-center p-2 xl:h-8 w-full bg-slate-700 rounded-3xl hover:scale-105 transition-all">
                 <img class="h-full xl:h-5" src="{{ asset('icons/profile.svg') }}" alt="Профиль">
             </a>
         </div>
@@ -36,7 +36,7 @@
             <form action="{{ route('logout') }}" method="post" class="xl:h-8 w-full">
                 @csrf
                 @method('POST')
-                <button type="submit" class="logout-button header-action-button flex justify-center items-center w-full h-full">
+                <button type="submit" class="flex justify-center items-center p-2 w-full h-full bg-red-500 rounded-3xl hover:scale-105 transition-all">
                     <img class="h-full xl:h-5" src="{{ asset('icons/logout.svg') }}" alt="Выйти">
                 </button>
             </form>
