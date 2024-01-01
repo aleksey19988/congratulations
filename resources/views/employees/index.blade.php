@@ -16,7 +16,7 @@
         @if($employees->count())
             {{ $employees->links('vendor.pagination.tailwind') }}
             <div class="employees-container">
-                <div class="header-employee-card grid grid-cols-7 py-3 my-3">
+                <div class="grid grid-cols-7 py-3 my-3 bg-slate-700 rounded-3xl text-2xl">
                     <div class="header-employee-card-full-name-container col-span-2 flex items-center justify-center">
                         <span class="header-employee-card-full-name">Полное имя</span>
                     </div>
@@ -32,7 +32,7 @@
                 </div>
                     <?php /** @var \App\Models\Employee $employee */ ?>
                 @foreach($employees as $employee)
-                    <div class="employee-card grid grid-cols-7 py-3 my-3">
+                    <div class="grid grid-cols-7 py-3 my-3 bg-slate-700 rounded-3xl text-xl">
                         <div class="employee-card-full-name-container col-span-2 flex items-center justify-center">
                             <span class="employee-card-full-name">{{ $employee->getFullName() }}</span>
                         </div>
@@ -53,21 +53,18 @@
                                 <div class="employee-card-congratulations-datetime">
                                     <span class="">Ещё не поздравляли</span>
                                 </div>
-                                <a href="#" class="employee-card-button congratulate-now text-center mt-2 py-1 w-3/5">
-                                    Поздравить сейчас
-                                </a>
                             </div>
                         @endif
                         <div class="employee-card-actions-container flex items-center justify-evenly">
                             <a href="{{ route('employees.show', $employee->id) }}"
-                               class="employee-card-action-button profile flex justify-center items-center w-2/5 p-1">
+                               class="flex justify-center items-center w-2/5 p-1 bg-slate-950 rounded-3xl">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="" class="max-h-8">
                             </a>
                             <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="w-full">
-                                    <a href="" class="delete-profile-button action-button flex justify-center items-center py-1 px-5">
+                                    <a href="" class="flex justify-center items-center py-1 px-5 bg-red-500 rounded-3xl">
                                         <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="button-icon">
                                     </a>
                                 </button>

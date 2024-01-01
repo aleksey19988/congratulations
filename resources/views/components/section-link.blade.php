@@ -2,7 +2,7 @@
     flex
     justify-center
     items-center
-    bg-gray-600
+    bg-slate-700
     h-28
     rounded-3xl
     text-xl

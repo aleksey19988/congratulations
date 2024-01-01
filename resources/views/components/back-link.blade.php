@@ -1,3 +1,3 @@
 <a href="{{ $route }}">
-    <button class="go-back-button py-1 px-5">{{ $text }}</button>
+    <button class="py-1 px-5 bg-slate-700 rounded-3xl">{{ $text }}</button>
 </a>

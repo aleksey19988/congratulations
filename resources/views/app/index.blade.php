@@ -12,7 +12,7 @@
             <x-section-link :route="route('administrative.index')" :text="'Сотрудники и их должности'"></x-section-link>
             <x-section-link :route="route('mail-templates.index')" :text="'Шаблоны поздравлений'"></x-section-link>
         </div>
-        <div class="birthday-people-container flex flex-nowrap overflow-x-auto">
+        <div class="flex flex-nowrap overflow-x-auto bg-slate-700 rounded-3xl h-48">
             <div class="background-text z-0 flex justify-center items-center px-5">
                 @if($birthdayPeople->count() > 0)
                     <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="">

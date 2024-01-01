@@ -6,14 +6,14 @@
     @vite('resources/css/app.css')
     <title>Congratulations</title>
 </head>
-<body class="flex flex-col items-center">
-<div class="header container mx-auto grid grid-cols-4 gap-x-5 p-4">
-    <div class="logo-container flex justify-center items-center">
+<body class="flex flex-col items-center bg-slate-950">
+<div class="container mx-auto grid grid-cols-4 gap-x-5 p-4 bg-slate-700 rounded-3xl">
+    <div class="flex justify-center items-center bg-slate-950 rounded-3xl p-5">
         <a href="/">
             <img class="logo-img" src="{{ asset('img/logo.svg') }}" alt="Логотип">
         </a>
     </div>
-    <div class="actions-container grid grid-cols-2 gap-x-7 col-start-4">
+    <div class="grid grid-cols-2 gap-x-7 col-start-4 bg-slate-950 rounded-3xl p-5">
         <div class="profile-container flex justify-center items-center">
             <span class="user-name">{{ Auth::user() ? Auth::user()->name : 'Неизвестный пользователь' }}</span>
         </div>
@@ -28,7 +28,6 @@
                     <img src="{{ asset('icons/logout.svg') }}" alt="Выйти">
                 </button>
             </form>
-
         </div>
     </div>
 </div>
