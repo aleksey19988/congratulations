@@ -44,7 +44,7 @@
                                 <div class="">
                                     Поздравили <span class="">{{ \Carbon\Carbon::make($employee->mailLog->created_at)->format('d.m.Y в H:i') }}</span>
                                 </div>
-                                <a href="{{ route('mail-log.index') }}" class="text-center mt-2 py-1 w-3/5">
+                                <a href="{{ route('mail-log.index') }}" class="text-center mt-2 py-1 w-3/5 bg-green-500 rounded-3xl hover:scale-105 transition-all">
                                     Подробнее
                                 </a>
                             @else
@@ -55,13 +55,13 @@
                         </div>
                         <div class="flex items-center justify-evenly">
                             <a href="{{ route('employees.show', $employee->id) }}"
-                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-950 rounded-3xl">
+                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="" class="h-5">
                             </a>
                             <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="w-full">
+                                <button type="submit" class="w-full hover:scale-105 transition-all">
                                     <a href="" class="flex justify-center items-center py-2 bg-red-500 rounded-3xl">
                                         <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="h-5">
                                     </a>
