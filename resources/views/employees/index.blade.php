@@ -58,7 +58,7 @@
                                class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="" class="h-5">
                             </a>
-                            <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
+                            <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="w-full hover:scale-105 transition-all">
