@@ -5,21 +5,21 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
-        <div class="go-back-button-container py-5">
+        <div class="py-5">
             <x-back-link :route="route('mail-templates.show', $mailTemplate->id)" :text="'Назад'"></x-back-link>
         </div>
-        <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center pt-16">
-                <div class="section-name">Редактирование шаблона поздравления</div>
+        <div class="flex flex-col items-center">
+            <div class="flex justify-center pt-16">
+                <div class="text-3xl">Редактирование шаблона поздравления</div>
             </div>
             @include('mail-templates.info-message')
-            <div class="add-mail-template-form-container">
+            <div class="">
                 <form action="{{ route('mail-templates.update', $mailTemplate) }}" method="POST"
-                      class="add-mail-template-form flex w-96 flex-col">
+                      class="flex flex-col items-center ">
                     @csrf
                     @method('PATCH')
 
-                    <div class="mb-3 flex -justify-center flex-col">
+                    <div class="mb-3 flex justify-center flex-col">
                         <x-text-input
                             type="text"
                             name="subject"
@@ -32,7 +32,7 @@
 
                     <div class="mb-3">
                         <x-textarea-input
-                            class="p-3 w-full resize-none"
+                            class="p-3 w-96 resize-none"
                             name="body"
                             placeholder="Текст поздравления"
                             rows="15"
@@ -41,7 +41,7 @@
                         <x-input-error :messages="$errors->get('body')" class="mt-2" />
                     </div>
 
-                    <button type="submit" class="save-add-mail-template-form-button m-3 p-3" id="form-button">
+                    <button type="submit" class="m-3 w-96 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all" id="">
                         Обновить
                     </button>
                 </form>

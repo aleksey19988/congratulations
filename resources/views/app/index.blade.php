@@ -1,19 +1,19 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
-        <div class="datetime-container flex items-center justify-center col-span-2 py-16">
-            <div class="date-time">
+        <div class="flex items-center justify-center col-span-2 py-16">
+            <div class="text-3xl">
                 Сегодня {{ \Carbon\Carbon::now()->locale('ru')->translatedFormat('j F Y, l') }}
             </div>
         </div>
-        <div class="sections-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 sm:grid-rows-1 row-start-2 gap-5 pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 sm:grid-rows-1 row-start-2 gap-5 pb-16">
             <x-section-link :route="route('mail-log.index')" :text="'Отправленные поздравления'"></x-section-link>
             <x-section-link :route="route('manual-congratulations.index')" :text="'Поздравить вручную'"></x-section-link>
             <x-section-link :route="route('administrative.index')" :text="'Сотрудники и их должности'"></x-section-link>
             <x-section-link :route="route('mail-templates.index')" :text="'Шаблоны поздравлений'"></x-section-link>
         </div>
-        <div class="birthday-people-container flex flex-nowrap items-center overflow-x-auto bg-slate-700 rounded-3xl h-48 py-2 px-5 relative scroll-smooth">
-            <div class="background-text flex justify-center items-center z-0 absolute ml-auto mr-auto left-0 right-0 text-center w-11/12">
+        <div class="flex flex-nowrap items-center overflow-x-auto bg-slate-700 rounded-3xl h-48 py-2 px-5 relative scroll-smooth">
+            <div class="flex justify-center items-center z-0 absolute ml-auto mr-auto left-0 right-0 text-center w-11/12">
                 @if($birthdayPeople->count() > 0)
                     <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="Именинники">
                 @else
@@ -22,23 +22,23 @@
             </div>
             @php /** @var \App\Models\Employee $employee */ @endphp
             @foreach($birthdayPeople as $employee)
-                <div class="birthday-people-card px-10 min-w-[60%] xl:min-w-[22%] h-full flex justify-around items-center flex-col mx-2 z-10 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
-                    <div class="full-name-container">
+                <div class="px-10 min-w-[60%] xl:min-w-[22%] h-full flex justify-around items-center flex-col mx-2 z-10 bg-slate-800 rounded-3xl hover:scale-105 transition-all">
+                    <div class="">
                         <span class="full-name">{{ $employee->getFullName() }}</span>
                     </div>
-                    <div class="congratulations-datetime-container">
+                    <div class="flex justify-center">
                         @if ($employee->mailLog)
-                            <span class="congratulations-datetime">
+                            <span class="text-center">
                                 Поздравили в {{ \Carbon\Carbon::make($employee->maillog->created_at)->format('H:i') }} 🎉
                             </span>
                         @else
-                            <span class="congratulations-datetime">
+                            <span class="text-center">
                                 Скоро поздравим 🤫
                             </span>
                         @endif
                     </div>
                     @if ($employee->mailLog)
-                        <a href="{{ route('mail-log.index') }}" class="button py-1.5 flex justify-center items-center flex-col">
+                        <a href="{{ route('mail-log.index') }}" class="p-1.5 w-full flex justify-center items-center flex-col bg-green-500 rounded-3xl hover:scale-105 transition-all">
                             Подробнее
                         </a>
                     @else

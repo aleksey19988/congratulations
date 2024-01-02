@@ -51,7 +51,7 @@
         <div class="flex">
             <div class="">
                 <a href="{{ route('employees.edit', $employee->id) }}" class="flex justify-center items-center py-1 px-5 bg-slate-700 rounded-3xl hover:scale-105 transition-all">
-                    <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать профиль" class="">
+                    <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать профиль" class="h-5">
                 </a>
             </div>
             <div class="">
@@ -60,7 +60,7 @@
                     @method('DELETE')
                     <button type="submit">
                         <a href="" class="flex justify-center items-center py-1 px-5 ml-3 bg-red-500 rounded-3xl hover:scale-105 transition-all">
-                            <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="">
+                            <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="h-5">
                         </a>
                     </button>
                 </form>

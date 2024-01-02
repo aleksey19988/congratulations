@@ -23,13 +23,13 @@
 ">
     <div class="flex justify-center items-center bg-slate-950 rounded-3xl p-5 col-end-2">
         <a href="/">
-            <img class="logo-img xl:h-10" src="{{ asset('img/logo.svg') }}" alt="Логотип">
+            <img class="h-10" src="{{ asset('img/logo.svg') }}" alt="Логотип">
         </a>
     </div>
     <div class="grid grid-cols-2 gap-x-7 md:col-start-3 lg:col-start-4 xl:col-start-6 bg-slate-950 rounded-3xl p-5 xl:py-2">
         <div class="flex justify-center items-center">
             <a href="{{ route('profile.edit') }}" class="flex justify-center items-center p-2 xl:h-8 w-full bg-slate-700 rounded-3xl hover:scale-105 transition-all">
-                <img class="h-full xl:h-5" src="{{ asset('icons/profile.svg') }}" alt="Профиль">
+                <img class="h-5" src="{{ asset('icons/profile.svg') }}" alt="Профиль">
             </a>
         </div>
         <div class="flex justify-center items-center">
@@ -37,7 +37,7 @@
                 @csrf
                 @method('POST')
                 <button type="submit" class="flex justify-center items-center p-2 w-full h-full bg-red-500 rounded-3xl hover:scale-105 transition-all">
-                    <img class="h-full xl:h-5" src="{{ asset('icons/logout.svg') }}" alt="Выйти">
+                    <img class="h-5" src="{{ asset('icons/logout.svg') }}" alt="Выйти">
                 </button>
             </form>
         </div>

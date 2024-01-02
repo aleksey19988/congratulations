@@ -24,7 +24,7 @@
         <div class="flex">
             <div class="">
                 <a href="{{ route('positions.edit', $position->id) }}" class="flex justify-center items-center py-1 px-5 bg-slate-700 rounded-3xl hover:scale-105 transition-all">
-                    <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать должность" class="">
+                    <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать должность" class="h-5">
                 </a>
             </div>
             <div class="">
@@ -35,7 +35,7 @@
                     <button type="submit" class="w-full">
                         <a href=""
                            class="flex justify-center items-center py-1 px-5 bg-red-500 rounded-3xl hover:scale-105 transition-all">
-                            <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить должность" class="">
+                            <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить должность" class="h-5">
                         </a>
                     </button>
                 </form>
