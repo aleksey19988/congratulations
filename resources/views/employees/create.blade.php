@@ -4,79 +4,83 @@
 @extends('layouts.header')
 @section('content')
     <div class="container mx-auto ">
-        <div class="go-back-button-container py-5">
-            <a href="{{ route('employees.index') }}">
-                <button class="go-back-button py-1 px-5">Назад</button>
-            </a>
+        <div class="py-5">
+            <x-back-link :route="route('employees.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="form-container flex flex-col items-center">
-            <div class="section-header-container flex justify-center py-16">
-                <div class="section-name">Добавление сотрудника</div>
+            <div class="flex justify-center py-16">
+                <div class="text-3xl">Добавление сотрудника</div>
             </div>
-            <div class="add-employee-form-container">
-                <form action="{{ route('employees.store') }}" method="post" class="add-employee-form flex flex-col">
+            <div class="">
+                <form action="{{ route('employees.store') }}" method="post" class="flex flex-col items-center">
                     @csrf
-                    <input
-                        type="text"
-                        name="first_name"
-                        class="@error('first_name') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
-                        placeholder="Имя"
-                        value="{{ old('first_name') }}"
-                    >
-                    @error('first_name')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <input
-                        type="text"
-                        name="last_name"
-                        class="@error('last_name') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
-                        placeholder="Фамилия"
-                        value="{{ old('last_name') }}"
-                    >
-                    @error('last_name')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <input
-                        type="text"
-                        name="patronymic"
-                        class="@error('patronymic') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
-                        placeholder="Отчество (при наличии)"
-                        value="{{ old('patronymic') }}"
-                    >
-                    @error('patronymic')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <input
-                        type="date"
-                        name="birthday"
-                        class="@error('birthday') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
-                        placeholder="Дата рождения"
-                        value="{{ old('birthday') }}"
-                    >
-                    @error('birthday')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <input
-                        type="email"
-                        name="email"
-                        class="@error('email') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
-                        placeholder="Электропочта"
-                        value="{{ old('email') }}"
-                    >
-                    @error('email')
-                    <div class="error-message text-rose-500 flex justify-center">{{ $message }}</div>
-                    @enderror
-                    <div class="m-3">
-                        <select id="position_id" name="position_id"
-                                class="input-field w-96 h-12 p-3 block border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            @php /** @var \App\Models\Position $position */ @endphp
-                            @foreach($positions as $position)
-                                <option value="{{ $position->id }}">{{ $position->name }}</option>
-                            @endforeach
-                        </select>
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-text-input
+                            type="text"
+                            name="first_name"
+                            class="w-96 p-3"
+                            placeholder="Имя"
+                            value="{{ old('first_name') }}"
+                        ></x-text-input>
+                        <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                     </div>
-                    <button type="submit" class="save-add-employee-form-button m-3 w-96 p-3"
-                            id="form-button">Сохранить
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-text-input
+                            type="text"
+                            name="last_name"
+                            class="w-96 p-3"
+                            placeholder="Фамилия"
+                            value="{{ old('last_name') }}"
+                        ></x-text-input>
+                        <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-text-input
+                            type="text"
+                            name="patronymic"
+                            class="w-96 p-3"
+                            placeholder="Отчество (при наличии)"
+                            value="{{ old('patronymic') }}"
+                        ></x-text-input>
+                        <x-input-error :messages="$errors->get('patronymic')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-text-input
+                            type="date"
+                            name="birthday"
+                            class="w-96 p-3"
+                            placeholder="Дата рождения"
+                            value="{{ old('birthday') }}"
+                        ></x-text-input>
+                        <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-text-input
+                            type="email"
+                            name="email"
+                            class="w-96 p-3"
+                            placeholder="Электропочта"
+                            value="{{ old('email') }}"
+                        ></x-text-input>
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-3 flex justify-center flex-col">
+                        <x-select-input
+                            class="w-96 p-3"
+                            name="position_id"
+                            :isUpdate="false"
+                            :options="$positions"
+                        >
+                        </x-select-input>
+                    </div>
+                    <button type="submit" class="m-3 w-96 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all" id="form-button">
+                        Сохранить
                     </button>
                 </form>
             </div>
