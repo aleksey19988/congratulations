@@ -22,7 +22,7 @@
                        type="password"
                        name="password"
                        required autocomplete="current-password"
-                        placeholder="Пароль"/>
+                       placeholder="Пароль"/>
             </label>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>

@@ -1,7 +1,4 @@
-@props(['disabled' => false])
-
-<input
-    {{ $disabled ? 'disabled' : '' }}
+<textarea
     {!! $attributes->merge([
     'class' => '
         border-gray-300
@@ -14,4 +11,4 @@
         dark:focus:border-emerald-600
         rounded-3xl
         shadow-sm'
-]) !!}>
+]) !!}>{{ $value }}</textarea>
