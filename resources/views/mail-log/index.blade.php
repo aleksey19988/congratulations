@@ -34,21 +34,19 @@
                     </div>
                 </div>
                 @foreach($mailLog as $record)
-                    <div class="grid grid-cols-4 lg:grid-cols-8 py-3 my-3 gap-x-5">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 py-3 my-3 bg-slate-700 rounded-3xl">
                         <div class="col-span-2 flex items-center justify-center">
-                            <span class="">
-                                @if($record->employee)
-                                    <a class="" href="{{ route('employees.show', $record->employee->id) }}">{{ $record->employee->getFullName() }}</a>
-                                @else
-                                    <span class="">
-                                        Сотрудник был удалён
-                                    </span>
-                                @endif
-                            </span>
+                            @if($record->employee)
+                                <a class="hover:scale-105 transition-all" href="{{ route('employees.show', $record->employee->id) }}">{{ $record->employee->getFullName() }}</a>
+                            @else
+                                <span class="">
+                                    Сотрудник был удалён
+                                </span>
+                            @endif
                         </div>
                         <div class="hidden lg:col-span-3 lg:flex lg:items-center">
                             @if($record->mailTemplate)
-                                <a class="" href="{{ route('mail-templates.show', $record->mailTemplate->id) }}">{{ $record->mailTemplate->subject }}</a>
+                                <a class="hover:scale-105 transition-all" href="{{ route('mail-templates.show', $record->mailTemplate->id) }}">{{ $record->mailTemplate->subject }}</a>
                             @else
                                 <span class="">Шаблон письма был удалён</span>
                             @endif
