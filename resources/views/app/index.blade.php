@@ -22,7 +22,7 @@
             </div>
             @php /** @var \App\Models\Employee $employee */ @endphp
             @foreach($birthdayPeople as $employee)
-                <div class="px-10 min-w-[60%] xl:min-w-[22%] h-full flex justify-around items-center flex-col mx-2 z-10 bg-slate-800 rounded-3xl hover:scale-105 transition-all">
+                <div class="px-10 min-w-[60%] xl:min-w-[22%] h-full flex justify-around items-center flex-col mx-2 z-10 bg-slate-300 dark:bg-slate-800 rounded-3xl hover:scale-105 transition-all">
                     <div class="">
                         <span class="full-name font-bold">{{ $employee->getFullName() }}</span>
                     </div>
