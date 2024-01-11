@@ -12,12 +12,12 @@
             <x-section-link :route="route('administrative.index')" :text="'Сотрудники и их должности'"></x-section-link>
             <x-section-link :route="route('mail-templates.index')" :text="'Шаблоны поздравлений'"></x-section-link>
         </div>
-        <div class="flex flex-nowrap items-center overflow-x-auto bg-slate-700 rounded-3xl h-48 py-2 px-5 relative scroll-smooth">
+        <div class="flex flex-nowrap items-center overflow-x-auto bg-white dark:bg-slate-700 rounded-3xl h-48 py-2 px-5 relative scroll-smooth">
             <div class="flex justify-center items-center z-0 absolute ml-auto mr-auto left-0 right-0 text-center w-11/12">
                 @if($birthdayPeople->count() > 0)
-                    <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="Именинники">
+                    <img src="{{ asset('icons/birthday-people-background-text.svg') }}" alt="Именинники" class="invert dark:invert-0">
                 @else
-                    <img src="{{ asset('icons/without-birthday-people-background-text.svg') }}" alt="Сегодня без именинников">
+                    <img src="{{ asset('icons/without-birthday-people-background-text.svg') }}" alt="Сегодня без именинников" class="invert dark:invert-0">
                 @endif
             </div>
             @php /** @var \App\Models\Employee $employee */ @endphp

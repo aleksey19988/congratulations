@@ -6,7 +6,7 @@
     @vite('resources/css/app.css')
     <title>Congratulations</title>
 </head>
-<body class="flex flex-col items-center bg-slate-950 text-white py-5 px-10 mb-20">
+<body class="flex flex-col items-center bg-slate-300 dark:bg-slate-950 dark:text-white py-5 px-10 mb-20">
 <div class="
     container
     mx-auto
@@ -18,15 +18,16 @@
     xl:grid-cols-6
     gap-x-5
     p-4
-    bg-slate-700
+    bg-white
+    dark:bg-slate-700
     rounded-3xl
 ">
-    <div class="flex justify-center items-center bg-slate-950 rounded-3xl p-5 col-end-2">
+    <div class="flex justify-center items-center bg-slate-300 dark:bg-slate-950 rounded-3xl p-5 col-end-2">
         <a href="/">
             <img class="h-10" src="{{ asset('img/logo.svg') }}" alt="Логотип">
         </a>
     </div>
-    <div class="grid grid-cols-2 gap-x-7 md:col-start-3 lg:col-start-4 xl:col-start-6 bg-slate-950 rounded-3xl p-5 xl:py-2">
+    <div class="grid grid-cols-2 gap-x-7 md:col-start-3 lg:col-start-4 xl:col-start-6 bg-slate-300 dark:bg-slate-950 rounded-3xl p-5 xl:py-2">
         <div class="flex justify-center items-center">
             <a href="{{ route('profile.edit') }}" class="flex justify-center items-center p-2 xl:h-8 w-full bg-slate-700 rounded-3xl hover:scale-105 transition-all">
                 <img class="h-5" src="{{ asset('icons/profile.svg') }}" alt="Профиль">

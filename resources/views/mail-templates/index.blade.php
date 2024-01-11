@@ -17,7 +17,7 @@
         @if($mailTemplates->count())
             {{ $mailTemplates->links('vendor.pagination.tailwind') }}
             <div class="">
-                <div class="bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-7 py-3 my-3 gap-x-5">
+                <div class="bg-white dark:bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-7 py-3 my-3 gap-x-5">
                     <div class="col-span-2 hidden lg:flex lg:items-center lg:justify-center">
                         <span class="text-xl font-bold">Тема письма</span>
                     </div>
@@ -30,7 +30,7 @@
                 </div>
                 @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
                 @foreach($mailTemplates as $mailTemplate)
-                    <div class="bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-7 p-3 my-3">
+                    <div class="bg-white dark:bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-7 p-3 my-3">
                         <div class="col-span-2 hidden lg:flex lg:items-center lg:justify-center px-3">
                             <span class="">{{ $mailTemplate->subject }}</span>
                         </div>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="lg:col-start-7 flex items-center justify-evenly">
                             <a href="{{ route('mail-templates.show', $mailTemplate->id) }}"
-                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
+                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/document.svg') }}" alt="Подробнее" class="h-5">
                             </a>
                             <form action="{{ route('mail-templates.destroy', $mailTemplate->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">

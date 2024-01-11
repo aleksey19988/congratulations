@@ -2,7 +2,8 @@
     flex
     justify-center
     items-center
-    bg-slate-700
+    bg-white
+    dark:bg-slate-700
     h-28
     rounded-3xl
     text-xl
