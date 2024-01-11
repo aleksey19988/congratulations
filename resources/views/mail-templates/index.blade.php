@@ -39,17 +39,26 @@
                         </div>
                         <div class="lg:col-start-7 flex items-center justify-evenly">
                             <a href="{{ route('mail-templates.show', $mailTemplate->id) }}"
+                               data-tooltip-target="tooltip-mail-template-data-button-{{ $loop->index }}"
                                class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/document.svg') }}" alt="Подробнее" class="h-5">
                             </a>
+                            <div id="tooltip-mail-template-data-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Подробнее
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
                             <form action="{{ route('mail-templates.destroy', $mailTemplate->id) }}" method="post" class="flex items-center justify-center w-2/5 p-1">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="w-full hover:scale-105 transition-all">
+                                <button type="submit" class="w-full hover:scale-105 transition-all" data-tooltip-target="tooltip-remove-mail-template-button-{{ $loop->index }}">
                                     <a href="" class="flex justify-center items-center py-2 bg-red-500 rounded-3xl">
                                         <img src="{{ asset('icons/delete-document.svg') }}" alt="Удалить шаблон" class="h-5">
                                     </a>
                                 </button>
+                                <div id="tooltip-remove-mail-template-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                    Удалить
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
                             </form>
                         </div>
                     </div>

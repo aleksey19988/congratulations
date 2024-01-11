@@ -39,17 +39,27 @@
                             <span class="">{{ \Carbon\Carbon::make($position->created_at)->translatedFormat('d.m.Y') }}</span>
                         </div>
                         <div class="lg:col-start-6 flex items-center justify-evenly">
-                            <a href="{{ route('positions.show', $position->id) }}" class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
+                            <a href="{{ route('positions.show', $position->id) }}"
+                               data-tooltip-target="tooltip-position-data-button-{{ $loop->index }}"
+                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="Подробнее" class="h-5">
                             </a>
+                            <div id="tooltip-position-data-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Подробнее
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
                             <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="flex items-center justify-center w-2/5">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="w-full hover:scale-105 transition-all">
+                                <button type="submit" class="w-full hover:scale-105 transition-all" data-tooltip-target="tooltip-remove-position-button-{{ $loop->index }}">
                                     <a href="" class="flex justify-center items-center py-2 bg-red-500 rounded-3xl">
                                         <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить должность" class="h-5">
                                     </a>
                                 </button>
+                                <div id="tooltip-remove-position-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                    Удалить
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
                             </form>
                         </div>
                     </div>
