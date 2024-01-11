@@ -16,7 +16,7 @@
         @if($employees->count())
             {{ $employees->links('vendor.pagination.tailwind') }}
             <div class="">
-                <div class="grid grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-slate-700 rounded-3xl text-2xl">
+                <div class="grid grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-2xl">
                     <div class="col-span-2 flex items-center justify-center">
                         <span class="text-xl font-bold">Полное имя</span>
                     </div>
@@ -32,7 +32,7 @@
                 </div>
                     <?php /** @var \App\Models\Employee $employee */ ?>
                 @foreach($employees as $employee)
-                    <div class="grid grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-slate-700 rounded-3xl text-xl">
+                    <div class="grid grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-xl">
                         <div class="col-span-2 flex items-center justify-center">
                             <span class="">{{ $employee->getFullName() }}</span>
                         </div>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="flex items-center justify-evenly">
                             <a href="{{ route('employees.show', $employee->id) }}"
-                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
+                               class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="" class="h-5">
                             </a>
                             <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="flex items-center justify-center w-2/5">

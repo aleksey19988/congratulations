@@ -14,7 +14,7 @@
                     <x-text-input
                         type="text"
                         name="name"
-                        class="@error('name') border-2 border-rose-500 @enderror input-field m-3 w-96 p-3"
+                        class="input-field m-3 w-96 p-3"
                         placeholder="Наименование должности"
                         value="{{ old('name') }}"
                     ></x-text-input>

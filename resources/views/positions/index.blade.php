@@ -17,7 +17,7 @@
         @if($positions->count())
             {{ $positions->links('vendor.pagination.tailwind') }}
             <div class="">
-                <div class="bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-6 py-3 my-3">
+                <div class="bg-white dark:bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-6 py-3 my-3">
                     <div class="col-span-2 flex items-center justify-center">
                         <span class="text-xl font-bold">Наименование</span>
                     </div>
@@ -30,7 +30,7 @@
                 </div>
                 @php /** @var \App\Models\Position $positions */ @endphp
                 @foreach($positions as $position)
-                    <div class="bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-6 py-3 my-3">
+                    <div class="bg-white dark:bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-6 py-3 my-3">
                         <div class="col-span-2 flex items-center justify-center">
                             <span class="">{{ $position->name }}</span>
                         </div>
@@ -39,7 +39,7 @@
                             <span class="">{{ \Carbon\Carbon::make($position->created_at)->translatedFormat('d.m.Y') }}</span>
                         </div>
                         <div class="lg:col-start-6 flex items-center justify-evenly">
-                            <a href="{{ route('positions.show', $position->id) }}" class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-950 rounded-3xl hover:scale-105 transition-all">
+                            <a href="{{ route('positions.show', $position->id) }}" class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="Подробнее" class="h-5">
                             </a>
                             <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="flex items-center justify-center w-2/5">

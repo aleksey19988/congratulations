@@ -19,7 +19,7 @@
         @if($mailLog->count())
             <div class="">
                 {{ $mailLog->links('vendor.pagination.tailwind') }}
-                <div class="grid grid-cols-4 lg:grid-cols-8 py-3 my-3 bg-slate-700 rounded-3xl text-2xl">
+                <div class="grid grid-cols-4 lg:grid-cols-8 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-2xl">
                     <div class="col-span-2 flex items-center justify-center">
                         <span class="">Получатель</span>
                     </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 @foreach($mailLog as $record)
-                    <div class="grid grid-cols-4 lg:grid-cols-8 py-3 my-3 bg-slate-700 rounded-3xl">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl">
                         <div class="col-span-2 flex items-center justify-center">
                             @if($record->employee)
                                 <a class="hover:scale-105 transition-all" href="{{ route('employees.show', $record->employee->id) }}">{{ $record->employee->getFullName() }}</a>
