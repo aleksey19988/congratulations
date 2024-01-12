@@ -33,7 +33,7 @@ class Employee extends Model
 
     public function getFullName(): string
     {
-        $nameAndLastname = "$this->first_name $this->last_name";
+        $nameAndLastname = "$this->last_name $this->first_name";
 
         if (isset($this->patronymic)) {
             return "$nameAndLastname $this->patronymic";
