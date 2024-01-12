@@ -13,7 +13,7 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $positions = Position::query()->orderBy('name')->paginate(10);
+        $positions = Position::query()->orderBy('name')->paginate(50);
 
         return view('positions.index', compact('positions'));
     }
