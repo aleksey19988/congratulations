@@ -16,11 +16,14 @@
         @if($employees->count())
             {{ $employees->links('vendor.pagination.tailwind') }}
             <div class="">
-                <div class="grid grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-2xl">
-                    <div class="col-span-2 flex items-center justify-center">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-2xl">
+                    <div class="col-span-1 flex items-center justify-center">
                         <span class="text-xl font-bold">Полное имя</span>
                     </div>
-                    <div class="col-span-2 hidden lg:flex lg:items-center lg:justify-center">
+                    <div class="col-span-1 lg:col-span-2 hidden md:flex md:items-center md:justify-center">
+                        <span class="text-xl font-bold">Должность</span>
+                    </div>
+                    <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">
                         <span class="text-xl font-bold">Дата рождения</span>
                     </div>
                     <div class="col-span-2 hidden lg:flex lg:flex-col lg:items-center lg:justify-center">
@@ -32,16 +35,19 @@
                 </div>
                     <?php /** @var \App\Models\Employee $employee */ ?>
                 @foreach($employees as $employee)
-                    <div class="grid grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-xl">
-                        <div class="col-span-2 flex items-center justify-center">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 p-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-xl">
+                        <div class="col-span-1 flex items-center justify-center">
                             <span class="">{{ $employee->getFullName() }}</span>
                         </div>
-                        <div class="col-span-2 hidden lg:flex lg:items-center lg:justify-center">
+                        <div class="col-span-1 lg:col-span-2 hidden md:flex md:items-center md:justify-center">
+                            <span class="">{{ $employee->position?->name ?: '-' }}</span>
+                        </div>
+                        <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">
                             <span class="">{{ \Carbon\Carbon::make($employee->birthday)->translatedFormat('d.m.Y') }}</span>
                         </div>
                         <div class="col-span-2 hidden lg:flex lg:flex-col lg:items-center lg:justify-center">
                             @if($employee->mailLog)
-                                <div class="">
+                                <div class="text-center">
                                     Поздравили <span class="">{{ \Carbon\Carbon::make($employee->mailLog->created_at)->format('d.m.Y в H:i') }}</span>
                                 </div>
                                 <a href="{{ route('mail-log.index') }}" class="text-center mt-2 py-1 w-3/5 bg-green-500 rounded-3xl hover:scale-105 transition-all">
@@ -59,7 +65,7 @@
                                class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/profile.svg') }}" alt="" class="h-5">
                             </a>
-                            <div id="tooltip-employee-profile-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            <div id="tooltip-employee-profile-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible hidden xl:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                 Подробнее
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
@@ -71,7 +77,7 @@
                                         <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить профиль" class="h-5">
                                     </a>
                                 </button>
-                                <div id="tooltip-remove-employee-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                <div id="tooltip-remove-employee-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible hidden xl:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                     Удалить
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>

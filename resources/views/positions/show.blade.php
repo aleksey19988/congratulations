@@ -28,7 +28,7 @@
                    class="flex justify-center items-center py-1 px-5 bg-slate-700 rounded-3xl hover:scale-105 transition-all">
                     <img src="{{ asset('icons/pencil.svg') }}" alt="Редактировать должность" class="h-5">
                 </a>
-                <div id="tooltip-edit-position-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                <div id="tooltip-edit-position-button" role="tooltip" class="absolute z-10 invisible hidden xl:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                     Редактировать
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
@@ -44,7 +44,7 @@
                             <img src="{{ asset('icons/delete-profile.svg') }}" alt="Удалить должность" class="h-5">
                         </a>
                     </button>
-                    <div id="tooltip-remove-position-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    <div id="tooltip-remove-position-button" role="tooltip" class="absolute z-10 invisible hidden xl:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                         Удалить
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
