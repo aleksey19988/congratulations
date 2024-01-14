@@ -43,7 +43,7 @@
                                class="flex justify-center items-center w-2/5 p-1 py-2 bg-slate-700 dark:bg-slate-950 rounded-3xl hover:scale-105 transition-all">
                                 <img src="{{ asset('icons/document.svg') }}" alt="Подробнее" class="h-5">
                             </a>
-                            <div id="tooltip-mail-template-data-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            <div id="tooltip-mail-template-data-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible hidden xl:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                 Подробнее
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
@@ -55,7 +55,7 @@
                                         <img src="{{ asset('icons/delete-document.svg') }}" alt="Удалить шаблон" class="h-5">
                                     </a>
                                 </button>
-                                <div id="tooltip-remove-mail-template-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                <div id="tooltip-remove-mail-template-button-{{ $loop->index }}" role="tooltip" class="absolute z-10 invisible hidden xl:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                     Удалить
                                     <div class="tooltip-arrow" data-popper-arrow></div>
                                 </div>
