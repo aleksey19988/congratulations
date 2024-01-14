@@ -6,7 +6,7 @@
     shadow
     dark:border-gray-600
     py-4
-    px-20
+    px-10
     bg-white
     dark:bg-slate-700
     fixed
