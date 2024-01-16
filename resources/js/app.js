@@ -8,7 +8,7 @@ window.Alpine = Alpine;
 Alpine.start();
 
 const themeToggleButton = document.querySelector('#js-theme-toggle-button');
-const htmlElem = document.querySelector('#html');
+const htmlElem = document.documentElement;
 
 function changeTheme() {
     localStorage.getItem('birthdayBlissAppTheme') === 'light' ? htmlElem.classList.remove('dark') : htmlElem.classList.add('dark');
