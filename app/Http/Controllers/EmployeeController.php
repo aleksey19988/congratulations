@@ -25,10 +25,10 @@ class EmployeeController extends Controller
             } else {
                 $employees = Employee::query()
                     ->orderBy($sortBy, $order)
-                    ->paginate(5);
+                    ->paginate(50);
             }
         } else {
-            $employees = Employee::query()->orderBy('id')->paginate(5);
+            $employees = Employee::query()->orderBy('id')->paginate(50);
         }
 
         return view('employees.index', compact('employees'));
@@ -106,6 +106,6 @@ class EmployeeController extends Controller
         return Employee::select('employees.*')
             ->join('positions', 'positions.id', '=', 'employees.position_id')
             ->orderBy('positions.name', $order)
-            ->paginate(5);
+            ->paginate(50);
     }
 }
