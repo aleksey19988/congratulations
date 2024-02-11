@@ -17,14 +17,46 @@
             {{ $employees->links('vendor.pagination.tailwind') }}
             <div class="">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 py-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-2xl">
-                    <div class="col-span-1 flex items-center justify-center">
-                        <span class="text-xl font-bold">Полное имя</span>
+                    <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
+                        <span class="text-xl font-bold">
+                            @if(request()->get('sortBy') === 'last_name')
+                                @if(request()->get('order') === 'asc')
+                                    <a href="{{ route('employees.index', ['sortBy' => 'last_name', 'order' => 'desc', 'page' => request()->page ?? 1]) }}">Полное имя</a>
+                                    <img src="{{ asset('icons/asc-sort.svg') }}" alt="По возрастанию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/asc-sort-dark.svg') }}" alt="По возрастанию" class="inline dark:hidden h-5">
+                                @elseif(request()->get('order') === 'desc')
+                                    <a href="{{ route('employees.index', ['sortBy' => 'last_name', 'order' => 'asc', 'page' => request()->page ?? 1]) }}">Полное имя</a>
+                                    <img src="{{ asset('icons/desc-sort.svg') }}" alt="По убыванию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/desc-sort-dark.svg') }}" alt="По убыванию" class="inline dark:hidden h-5">
+                                @else
+                                    <a href="{{ route('employees.index', ['sortBy' => 'last_name', 'order' => 'desc']) }}">Полное имя</a>
+                                @endif
+                            @else
+                                <a href="{{ route('employees.index', ['sortBy' => 'last_name', 'order' => 'desc']) }}">Полное имя</a>
+                            @endif
+                        </span>
                     </div>
-                    <div class="col-span-1 lg:col-span-2 hidden md:flex md:items-center md:justify-center">
+                    <div class="col-span-1 hidden md:flex md:items-center md:justify-center">
                         <span class="text-xl font-bold">Должность</span>
                     </div>
                     <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">
-                        <span class="text-xl font-bold">Дата рождения</span>
+                        <span class="text-xl font-bold">
+                            @if(request()->get('sortBy') === 'birthday')
+                                @if(request()->get('order') === 'asc')
+                                    <a href="{{ route('employees.index', ['sortBy' => 'birthday', 'order' => 'desc', 'page' => request()->page ?? 1]) }}">Дата рождения</a>
+                                    <img src="{{ asset('icons/asc-sort.svg') }}" alt="По возрастанию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/asc-sort-dark.svg') }}" alt="По возрастанию" class="inline dark:hidden h-5">
+                                @elseif(request()->get('order') === 'desc')
+                                    <a href="{{ route('employees.index', ['sortBy' => 'birthday', 'order' => 'asc', 'page' => request()->page ?? 1]) }}">Дата рождения</a>
+                                    <img src="{{ asset('icons/desc-sort.svg') }}" alt="По убыванию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/desc-sort-dark.svg') }}" alt="По убыванию" class="inline dark:hidden h-5">
+                                @else
+                                    <a href="{{ route('employees.index', ['sortBy' => 'birthday', 'order' => 'desc']) }}">Дата рождения</a>
+                                @endif
+                            @else
+                                <a href="{{ route('employees.index', ['sortBy' => 'birthday', 'order' => 'desc']) }}">Дата рождения</a>
+                            @endif
+                        </span>
                     </div>
                     <div class="col-span-2 hidden lg:flex lg:flex-col lg:items-center lg:justify-center">
                         <span class="text-xl font-bold">Когда поздравили</span>
@@ -36,10 +68,10 @@
                     <?php /** @var \App\Models\Employee $employee */ ?>
                 @foreach($employees as $employee)
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 p-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-xl">
-                        <div class="col-span-1 flex items-center justify-center">
+                        <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
                             <span class="">{{ $employee->getFullName() }}</span>
                         </div>
-                        <div class="col-span-1 lg:col-span-2 hidden md:flex md:items-center md:justify-center">
+                        <div class="col-span-1 hidden md:flex md:items-center md:justify-center">
                             <span class="">{{ $employee->position?->name ?: '-' }}</span>
                         </div>
                         <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">

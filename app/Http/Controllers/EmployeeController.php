@@ -6,15 +6,26 @@ use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::query()->orderBy('last_name')->paginate(50);
+        $sortBy = $request->sortBy ?? '';
+        $order = $request->order ?? '';
+        $employees = [];
+
+        if ($sortBy && $order) {
+            $employees = Employee::query()
+                ->orderBy($sortBy, $order)
+                ->paginate(5);
+        } else {
+            $employees = Employee::query()->orderBy('id')->paginate(5);
+        }
 
         return view('employees.index', compact('employees'));
     }
