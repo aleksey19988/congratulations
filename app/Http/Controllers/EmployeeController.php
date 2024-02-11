@@ -6,15 +6,30 @@ use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::query()->orderBy('last_name')->paginate(50);
+        $sortBy = $request->sortBy ?? '';
+        $order = $request->order ?? '';
+        $employees = [];
+
+        if ($sortBy && $order) {
+            if ($sortBy === 'position') {
+                $employees = $this->getByPositionSort($order);
+            } else {
+                $employees = Employee::query()
+                    ->orderBy($sortBy, $order)
+                    ->paginate(50);
+            }
+        } else {
+            $employees = Employee::query()->orderBy('id')->paginate(50);
+        }
 
         return view('employees.index', compact('employees'));
     }
@@ -78,5 +93,19 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return redirect(route('employees.index'))->with('message', "Сотрудник $fullName успешно удалён.");
+    }
+
+    /**
+     * Получение списка сотрудников, отсортированных по должности
+     *
+     * @param string $order
+     * @return mixed
+     */
+    private function getByPositionSort(string $order): mixed
+    {
+        return Employee::select('employees.*')
+            ->join('positions', 'positions.id', '=', 'employees.position_id')
+            ->orderBy('positions.name', $order)
+            ->paginate(50);
     }
 }
