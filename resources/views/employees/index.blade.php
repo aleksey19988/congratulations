@@ -37,7 +37,23 @@
                         </span>
                     </div>
                     <div class="col-span-1 hidden md:flex md:items-center md:justify-center">
-                        <span class="text-xl font-bold">Должность</span>
+                        <span class="text-xl font-bold">
+                            @if(request()->get('sortBy') === 'position')
+                                @if(request()->get('order') === 'asc')
+                                    <a href="{{ route('employees.index', ['sortBy' => 'position', 'order' => 'desc', 'page' => request()->page ?? 1]) }}">Должность</a>
+                                    <img src="{{ asset('icons/asc-sort.svg') }}" alt="По возрастанию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/asc-sort-dark.svg') }}" alt="По возрастанию" class="inline dark:hidden h-5">
+                                @elseif(request()->get('order') === 'desc')
+                                    <a href="{{ route('employees.index', ['sortBy' => 'position', 'order' => 'asc', 'page' => request()->page ?? 1]) }}">Должность</a>
+                                    <img src="{{ asset('icons/desc-sort.svg') }}" alt="По убыванию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/desc-sort-dark.svg') }}" alt="По убыванию" class="inline dark:hidden h-5">
+                                @else
+                                    <a href="{{ route('employees.index', ['sortBy' => 'position', 'order' => 'desc']) }}">Должность</a>
+                                @endif
+                            @else
+                                <a href="{{ route('employees.index', ['sortBy' => 'position', 'order' => 'desc']) }}">Должность</a>
+                            @endif
+                        </span>
                     </div>
                     <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">
                         <span class="text-xl font-bold">

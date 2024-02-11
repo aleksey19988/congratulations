@@ -20,9 +20,13 @@ class EmployeeController extends Controller
         $employees = [];
 
         if ($sortBy && $order) {
-            $employees = Employee::query()
-                ->orderBy($sortBy, $order)
-                ->paginate(5);
+            if ($sortBy === 'position') {
+                $employees = $this->getByPositionSort($order);
+            } else {
+                $employees = Employee::query()
+                    ->orderBy($sortBy, $order)
+                    ->paginate(5);
+            }
         } else {
             $employees = Employee::query()->orderBy('id')->paginate(5);
         }
@@ -89,5 +93,19 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return redirect(route('employees.index'))->with('message', "Сотрудник $fullName успешно удалён.");
+    }
+
+    /**
+     * Получение списка сотрудников, отсортированных по должности
+     *
+     * @param string $order
+     * @return mixed
+     */
+    private function getByPositionSort(string $order): mixed
+    {
+        return Employee::select('employees.*')
+            ->join('positions', 'positions.id', '=', 'employees.position_id')
+            ->orderBy('positions.name', $order)
+            ->paginate(5);
     }
 }
