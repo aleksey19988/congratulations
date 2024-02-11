@@ -11,9 +11,13 @@
         <div class="py-5">
             <x-back-link :route="route('app.index')" :text="'Назад'"></x-back-link>
         </div>
-        @if(session('message'))
-            <div class="p-5 my-5">
-                <span class="info-message-text text-white">{{session('message')}}</span>
+        @if(session('success-message'))
+            <div class="w-full p-5 bg-green-500 rounded-3xl">
+                <span class="text-xl">{{session('success-message')}}</span>
+            </div>
+        @elseif(session('error-message'))
+            <div class="w-full p-5 bg-red-500 rounded-3xl">
+                <span class="text-xl">{{session('error-message')}}</span>
             </div>
         @endif
         <div class="flex flex-col items-center">

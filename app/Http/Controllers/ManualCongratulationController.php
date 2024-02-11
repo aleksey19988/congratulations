@@ -49,7 +49,7 @@ class ManualCongratulationController extends Controller
                 'is_send_success' => true,
             ]);
 
-            return back()->with('message', 'Письмо успешно отправлено. Подробнее в разделе "Отправленные поздравления".');
+            return back()->with('success-message', 'Письмо успешно отправлено. Подробнее в разделе "Отправленные поздравления".');
         } catch (\Exception $e) {
             MailLog::query()->create([
                 'employee_id' => $dataForSend['employee']->id,
@@ -58,7 +58,7 @@ class ManualCongratulationController extends Controller
                 'error_message' => $e->getMessage(),
             ]);
 
-            return back()->with('message', 'Ошибка при отправке письма. Попробуйте снова чуть позже.');
+            return back()->with('error-message', 'Ошибка при отправке письма. Попробуйте снова чуть позже.');
         }
     }
 
