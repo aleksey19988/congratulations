@@ -19,7 +19,10 @@ class EmployeeController extends Controller
         $order = $request->order ?? '';
         $employees = [];
 
-        if ($sortBy && $order) {
+        if (
+            ($sortBy && $order)
+            && $this->validateRequest($sortBy, $order)
+        ) {
             if ($sortBy === 'position') {
                 $employees = $this->getByPositionSort($order);
             } else {
@@ -107,5 +110,23 @@ class EmployeeController extends Controller
             ->join('positions', 'positions.id', '=', 'employees.position_id')
             ->orderBy('positions.name', $order)
             ->paginate(50);
+    }
+
+    /**
+     * Проверка на существование переданных для сортировки имени поля в таблице и направления сортировки
+     *
+     * @param string $sortBy
+     * @param string $order
+     * @return bool
+     */
+    private function validateRequest(string $sortBy, string $order): bool
+    {
+        $employee = Employee::query()->first();
+
+        if ($employee) {
+            return $employee->$sortBy && in_array(strtoupper($order), ['ASC', 'DESC']);
+        }
+
+        return false;
     }
 }

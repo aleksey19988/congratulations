@@ -11,9 +11,26 @@ class PositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $positions = Position::query()->orderBy('name')->paginate(50);
+        $sortBy = $request->sortBy ?? '';
+        $order = $request->order ?? '';
+        $positions = [];
+
+        if (
+            ($sortBy && $order)
+            && $this->validateRequest($sortBy, $order)
+        ) {
+            if ($sortBy === 'position') {
+                $employees = $this->getByPositionSort($order);
+            } else {
+                $positions = Position::query()
+                    ->orderBy($sortBy, $order)
+                    ->paginate(50);
+            }
+        } else {
+            $positions = Position::query()->orderBy('name')->paginate(50);
+        }
 
         return view('positions.index', compact('positions'));
     }
@@ -73,5 +90,24 @@ class PositionController extends Controller
         $position->delete();
 
         return redirect(route('positions.index'))->with('message', "Должность '$name' успешно удалена.");
+    }
+
+    /**
+     * Проверка на существование переданных для сортировки имени поля в таблице и направления сортировки
+     *
+     * @param string $sortBy
+     * @param string $order
+     * @return bool
+     */
+    private function validateRequest(string $sortBy, string $order): bool
+    {
+        $position = Position::query()->first();
+
+        if ($position) {
+            return $position->$sortBy && in_array(strtoupper($order), ['ASC', 'DESC']);
+        }
+
+        return false;
+
     }
 }

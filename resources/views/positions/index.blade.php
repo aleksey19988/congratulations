@@ -19,10 +19,42 @@
             <div class="">
                 <div class="bg-white dark:bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-6 py-3 my-3">
                     <div class="col-span-2 flex items-center justify-center">
-                        <span class="text-xl font-bold">Наименование</span>
+                        <span class="text-xl font-bold">
+                            @if(request()->get('sortBy') === 'name')
+                                @if(request()->get('order') === 'asc')
+                                    <a href="{{ route('positions.index', ['sortBy' => 'name', 'order' => 'desc', 'page' => request()->page ?? 1]) }}">Наименование</a>
+                                    <img src="{{ asset('icons/asc-sort.svg') }}" alt="По возрастанию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/asc-sort-dark.svg') }}" alt="По возрастанию" class="inline dark:hidden h-5">
+                                @elseif(request()->get('order') === 'desc')
+                                    <a href="{{ route('positions.index', ['sortBy' => 'name', 'order' => 'asc', 'page' => request()->page ?? 1]) }}">Наименование</a>
+                                    <img src="{{ asset('icons/desc-sort.svg') }}" alt="По убыванию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/desc-sort-dark.svg') }}" alt="По убыванию" class="inline dark:hidden h-5">
+                                @else
+                                    <a href="{{ route('positions.index', ['sortBy' => 'name', 'order' => 'desc']) }}">Наименование</a>
+                                @endif
+                            @else
+                                <a href="{{ route('positions.index', ['sortBy' => 'name', 'order' => 'desc']) }}">Наименование</a>
+                            @endif
+                        </span>
                     </div>
                     <div class="lg:col-span-2 hidden lg:flex lg:items-center justify-center">
-                        <span class="text-xl font-bold">Когда добавили</span>
+                        <span class="text-xl font-bold">
+                            @if(request()->get('sortBy') === 'created_at')
+                                @if(request()->get('order') === 'asc')
+                                    <a href="{{ route('positions.index', ['sortBy' => 'created_at', 'order' => 'desc', 'page' => request()->page ?? 1]) }}">Дата создания</a>
+                                    <img src="{{ asset('icons/asc-sort.svg') }}" alt="По возрастанию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/asc-sort-dark.svg') }}" alt="По возрастанию" class="inline dark:hidden h-5">
+                                @elseif(request()->get('order') === 'desc')
+                                    <a href="{{ route('positions.index', ['sortBy' => 'created_at', 'order' => 'asc', 'page' => request()->page ?? 1]) }}">Дата создания</a>
+                                    <img src="{{ asset('icons/desc-sort.svg') }}" alt="По убыванию" class="hidden dark:inline h-5">
+                                    <img src="{{ asset('icons/desc-sort-dark.svg') }}" alt="По убыванию" class="inline dark:hidden h-5">
+                                @else
+                                    <a href="{{ route('positions.index', ['sortBy' => 'created_at', 'order' => 'desc']) }}">Дата создания</a>
+                                @endif
+                            @else
+                                <a href="{{ route('positions.index', ['sortBy' => 'created_at', 'order' => 'desc']) }}">Дата создания</a>
+                            @endif
+                        </span>
                     </div>
                     <div class="lg:col-start-6 flex items-center justify-evenly">
                         <span class="text-xl font-bold">Действия</span>
@@ -31,7 +63,7 @@
                 @php /** @var \App\Models\Position $positions */ @endphp
                 @foreach($positions as $position)
                     <div class="bg-white dark:bg-slate-700 rounded-3xl grid grid-cols-3 lg:grid-cols-6 py-3 my-3">
-                        <div class="col-span-2 flex items-center justify-center">
+                        <div class="col-span-2 flex items-center justify-center text-center">
                             <span class="">{{ $position->name }}</span>
                         </div>
                         <div

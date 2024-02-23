@@ -84,10 +84,10 @@
                     <?php /** @var \App\Models\Employee $employee */ ?>
                 @foreach($employees as $employee)
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 p-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-xl">
-                        <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
+                        <div class="col-span-1 lg:col-span-2 flex items-center justify-center text-center">
                             <span class="">{{ $employee->getFullName() }}</span>
                         </div>
-                        <div class="col-span-1 hidden md:flex md:items-center md:justify-center">
+                        <div class="col-span-1 hidden md:flex md:items-center md:justify-center text-center">
                             <span class="">{{ $employee->position?->name ?: '-' }}</span>
                         </div>
                         <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">
