@@ -32,9 +32,13 @@ class MailTemplateController extends Controller
     public function store(MailTemplateRequest $request)
     {
         $validatedData = $request->validated();
-        MailTemplate::query()->create($validatedData);
+        $isCreated = MailTemplate::query()->create($validatedData);
 
-        return redirect(route('mail-templates.index'))->with('message', 'Шаблон успешно добавлен.');
+        if ($isCreated) {
+            return redirect(route('mail-templates.index'))->with('success-message', 'Шаблон успешно добавлен');
+        }
+
+        return redirect(route('mail-templates.index'))->with('error-message', 'Ошибка при добавлении шаблона');
     }
 
     /**
@@ -59,9 +63,13 @@ class MailTemplateController extends Controller
     public function update(MailTemplateRequest $request, MailTemplate $mailTemplate)
     {
         $validatedData = $request->validated();
-        $mailTemplate->update($validatedData);
+        $isUpdated = $mailTemplate->update($validatedData);
 
-        return redirect(route('mail-templates.show', $mailTemplate))->with('message', 'Данные успешно обновлены.');
+        if ($isUpdated) {
+            return redirect(route('mail-templates.show', $mailTemplate))->with('success-message', 'Шаблон успешно обновлён');
+        }
+
+        return redirect(route('mail-templates.show', $mailTemplate))->with('error-message', 'Ошибка при обновлении шаблона');
     }
 
     /**
@@ -70,8 +78,12 @@ class MailTemplateController extends Controller
     public function destroy(MailTemplate $mailTemplate)
     {
         $subject = $mailTemplate->subject;
-        $mailTemplate->delete();
+        $isDeleted = $mailTemplate->delete();
 
-        return redirect(route('mail-templates.index'))->with('message', "Шаблон '$subject' успешно удалён.");
+        if ($isDeleted) {
+            return redirect(route('mail-templates.index'))->with('success-message', "Шаблон '$subject' успешно удалён");
+        }
+
+        return redirect(route('mail-templates.index'))->with('error-message', "Ошибка при удалении шаблона с темой '$subject'");
     }
 }
