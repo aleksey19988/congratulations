@@ -58,7 +58,6 @@
                             type="text"
                             name="birthday"
                             class="w-96 p-3"
-                            placeholder="Дата рождения"
                             value="{{ \Carbon\Carbon::make($employee->birthday)->format('d.m.Y') }}"
                         ></x-date-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
