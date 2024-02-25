@@ -5,13 +5,17 @@
             <x-back-link :route="route('app.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="flex flex-col items-center py-16">
-            <div class="text-3xl">Шаблоны поздравлений</div>
+            <div class="text-3xl font-bold text-center">Шаблоны поздравлений</div>
             <a href="{{ route('mail-templates.create') }}"
                class="py-1 flex justify-center w-9/12 lg:w-3/12 mt-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all">Добавить шаблон</a>
         </div>
-        @if(session('message'))
-            <div class="w-full p-5 bg-green-500 rounded-3xl">
-                <span class="text-xl">{{session('message')}}</span>
+        @if(session('success-message'))
+            <div class="w-full p-5 my-3 bg-green-500 rounded-3xl">
+                <span class="text-xl">{{session('success-message')}}</span>
+            </div>
+        @elseif(session('error-message'))
+            <div class="w-full p-5 my-3 bg-red-400 rounded-3xl">
+                <span class="text-xl">{{session('error-message')}}</span>
             </div>
         @endif
         @if($mailTemplates->count())

@@ -9,7 +9,7 @@
             <x-back-link :route="route('app.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="flex flex-col items-center py-16">
-            <div class="text-3xl">Отправленные поздравления</div>
+            <div class="text-3xl font-bold text-center">Отправленные поздравления</div>
         </div>
         @if(session('message'))
             <div class="w-full p-5 bg-green-500 rounded-3xl">
@@ -64,7 +64,7 @@
             </div>
         @else
             <div class="w-full flex justify-center">
-                <p class="text-xl">Пока никого не поздравляли &#128532;</p>
+                <p class="text-xl text-center">Пока никого не поздравляли &#128532;</p>
             </div>
         @endif
     </div>

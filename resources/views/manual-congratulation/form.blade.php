@@ -1,9 +1,9 @@
 @php
-    /**
-     * @var App\Models\forms\ManualCongratulationForm $form
-     * @var \Illuminate\Support\Collection $employees
-     * @var \Illuminate\Support\Collection $mailTemplates
-     */
+/**
+ * @var App\Models\forms\ManualCongratulationForm $form
+ * @var \Illuminate\Support\Collection $employees
+ * @var \Illuminate\Support\Collection $mailTemplates
+ */
 @endphp
 @extends('layouts.header')
 @section('content')
@@ -22,19 +22,20 @@
         @endif
         <div class="flex flex-col items-center">
             <div class="flex justify-center py-16">
-                <div class="text-3xl font-bold">Ручная отправка поздравления</div>
+                <div class="text-3xl font-bold text-center">Ручная отправка поздравления</div>
             </div>
-            <div class="">
-                <form action="{{ route('manual-congratulations.send') }}" method="post"
-                      class="flex flex-col">
-                    @csrf
+            @if($employees->all())
+                <div class="">
+                    <form action="{{ route('manual-congratulations.send') }}" method="post"
+                          class="flex flex-col">
+                        @csrf
 
-                    <div class="mb-3 flex justify-center flex-col">
-                        <label for="employee_id">Сотрудник</label>
-                        <select
-                            id="employee_id"
-                            name="employee_id"
-                            class="
+                        <div class="mb-3 flex justify-center flex-col">
+                            <label for="employee_id">Сотрудник</label>
+                            <select
+                                id="employee_id"
+                                name="employee_id"
+                                class="
                                 w-full
                                 md:w-3/4
                                 lg:w-1/2
@@ -48,22 +49,22 @@
                                 rounded-3xl
                                 shadow-sm
                             ">
-                            @php /** @var \App\Models\Employee $employee */ @endphp
-                            @foreach($employees as $employee)
-                                <option value="{{ $employee->id }}">{{ $employee->getFullName() }}
-                                    ({{ $employee->position->name }})
-                                </option>
-                            @endforeach
-                        </select>
-                        <x-input-error :messages="$errors->get('employee_id')" class="mt-2"/>
-                    </div>
+                                @php /** @var \App\Models\Employee $employee */ @endphp
+                                @foreach($employees as $employee)
+                                    <option value="{{ $employee->id }}">
+                                        {{ $employee->getFullName() }} ({{ $employee->position->name }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('employee_id')" class="mt-2"/>
+                        </div>
 
-                    <div class="mb-3 flex justify-center flex-col">
-                        <label for="mail_template_id">Шаблон поздравления</label>
-                        <select
-                            id="mail_template_id"
-                            name="mail_template_id"
-                            class="
+                        <div class="mb-3 flex justify-center flex-col">
+                            <label for="mail_template_id">Шаблон поздравления</label>
+                            <select
+                                id="mail_template_id"
+                                name="mail_template_id"
+                                class="
                                 w-full
                                 md:w-3/4
                                 lg:w-1/2
@@ -77,44 +78,48 @@
                                 rounded-3xl
                                 shadow-sm
                             ">
-                            @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
-                            @foreach($mailTemplates as $mailTemplate)
-                                <option
-                                    value="{{ $mailTemplate->id }}"
-                                @if($mailTemplate->id == old('mail_template_id'))
-                                    {{ 'selected' }}
-                                    @endif
-                                >
-                                    {{ $mailTemplate->body }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <x-input-error :messages="$errors->get('mail_template_id')" class="mt-2"/>
-                    </div>
-                    <div class="mb-3 flex justify-center flex-col">
-                        <label for="company_name_id">Имя компании</label>
-                        <x-text-input
-                            type="text"
-                            id="company_name_id"
-                            name="company_name"
-                            class="
+                                @php /** @var \App\Models\MailTemplate $mailTemplate */ @endphp
+                                @foreach($mailTemplates as $mailTemplate)
+                                    <option
+                                        value="{{ $mailTemplate->id }}"
+                                    @if($mailTemplate->id == old('mail_template_id'))
+                                        {{ 'selected' }}
+                                        @endif
+                                    >
+                                        {{ $mailTemplate->body }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('mail_template_id')" class="mt-2"/>
+                        </div>
+                        <div class="mb-3 flex justify-center flex-col">
+                            <label for="company_name_id">Имя компании</label>
+                            <x-text-input
+                                type="text"
+                                id="company_name_id"
+                                name="company_name"
+                                class="
                                 p-3
                                 w-full
                                 md:w-3/4
                                 lg:w-1/2"
-                            placeholder="Имя компании"
-                            value="{{ old('company_name') }}"
-                        ></x-text-input>
-                        <x-input-error :messages="$errors->get('company_name')" class="mt-2"/>
-                    </div>
-                    <button
-                        type="submit"
-                        class=" w-full md:w-3/4 lg:w-1/2 my-3 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all"
-                        id="form-button">
-                        Отправить
-                    </button>
-                </form>
-            </div>
+                                placeholder="Имя компании"
+                                value="{{ old('company_name') }}"
+                            ></x-text-input>
+                            <x-input-error :messages="$errors->get('company_name')" class="mt-2"/>
+                        </div>
+                        <button
+                            type="submit"
+                            class=" w-full md:w-3/4 lg:w-1/2 my-3 p-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all"
+                            id="form-button">
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+            @else
+                <div class="text-xl text-center">Для начала добавь будущих именинников</div>
+                <a href="{{ route('employees.create') }}" class="py-1 flex justify-center w-9/12 lg:w-4/12 mt-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all">Добавить сотрудника</a>
+            @endif
         </div>
     </div>
 @endsection

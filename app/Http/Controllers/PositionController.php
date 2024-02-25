@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\SortDirection;
 use App\Http\Requests\PositionRequest;
 use App\Models\Position;
 use Illuminate\Http\Request;
@@ -11,9 +12,23 @@ class PositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $positions = Position::query()->orderBy('name')->paginate(50);
+        $perPage = 50;
+        $sortBy = $request->sortBy ?? '';
+        $order = $request->order ?? '';
+        $positions = [];
+
+        if (
+            ($sortBy && $order)
+            && $this->validateRequest($sortBy, $order)
+        ) {
+            $positions = Position::query()
+                ->orderBy($sortBy, $order)
+                ->paginate($perPage);
+        } else {
+            $positions = Position::query()->orderBy('name')->paginate($perPage);
+        }
 
         return view('positions.index', compact('positions'));
     }
@@ -32,9 +47,13 @@ class PositionController extends Controller
     public function store(PositionRequest $request)
     {
         $validatedData = $request->validated();
-        Position::query()->create($validatedData)->save();
+        $isCreated = Position::query()->create($validatedData)->save();
 
-        return redirect(route('positions.index'))->with('message', 'Должность успешно добавлена.');
+        if ($isCreated) {
+            return redirect(route('positions.index'))->with('success-message', 'Должность успешно добавлена');
+        }
+
+        return redirect(route('positions.index'))->with('error-message', 'Ошибка при добавлении должности');
     }
 
     /**
@@ -59,9 +78,13 @@ class PositionController extends Controller
     public function update(PositionRequest $request, Position $position)
     {
         $validatedData = $request->validated();
-        $position->update($validatedData);
+        $isUpdated = $position->update($validatedData);
 
-        return redirect(route('positions.show', $position))->with('message', 'Данные успешно обновлены.');
+        if ($isUpdated) {
+            return redirect(route('positions.show', $position))->with('success-message', 'Должность успешно обновлена');
+        }
+
+        return redirect(route('positions.show', $position))->with('error-message', 'Ошибка при обновлении должности');
     }
 
     /**
@@ -70,8 +93,31 @@ class PositionController extends Controller
     public function destroy(Position $position)
     {
         $name = $position->name;
-        $position->delete();
+        $isDeleted = $position->delete();
 
-        return redirect(route('positions.index'))->with('message', "Должность '$name' успешно удалена.");
+        if ($isDeleted) {
+            return redirect(route('positions.index'))->with('success-message', "Должность '$name' успешно удалена");
+        }
+
+        return redirect(route('positions.index'))->with('error-message', "Ошибка при удалении должности '$name'");
+    }
+
+    /**
+     * Проверка на существование переданных для сортировки имени поля в таблице и направления сортировки
+     *
+     * @param string $sortBy
+     * @param string $order
+     * @return bool
+     */
+    private function validateRequest(string $sortBy, string $order): bool
+    {
+        $position = Position::query()->first();
+
+        if ($position) {
+            return $position->$sortBy && SortDirection::tryFrom(strtoupper($order));
+        }
+
+        return false;
+
     }
 }
