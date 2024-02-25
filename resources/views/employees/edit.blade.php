@@ -54,13 +54,13 @@
                     </div>
 
                     <div class="mb-3 flex justify-center flex-col">
-                        <x-text-input
-                            type="date"
+                        <x-date-input
+                            type="text"
                             name="birthday"
                             class="w-96 p-3"
                             placeholder="Дата рождения"
-                            value="{{ \Carbon\Carbon::make($employee->birthday)->format('Y-m-d') }}"
-                        ></x-text-input>
+                            value="{{ \Carbon\Carbon::make($employee->birthday)->format('d.m.Y') }}"
+                        ></x-date-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
 

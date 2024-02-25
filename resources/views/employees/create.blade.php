@@ -49,13 +49,13 @@
                     </div>
 
                     <div class="mb-3 flex justify-center flex-col">
-                        <x-text-input
-                            type="date"
+                        <x-date-input
+                            type="text"
                             name="birthday"
                             class="w-96 p-3"
                             placeholder="Дата рождения"
                             value="{{ old('birthday') }}"
-                        ></x-text-input>
+                        ></x-date-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
 

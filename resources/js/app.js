@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'flowbite';
+import './forms.js';
 
 import Alpine from 'alpinejs';
 
@@ -33,4 +34,3 @@ themeToggleButton.addEventListener('click', function(event) {
         changeTheme();
     }
 });
-
