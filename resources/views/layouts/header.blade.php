@@ -64,6 +64,10 @@
 </div>
 @yield('content')
 @include('layouts.footer')
+<!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+<script
+    type="module"
+    src="/node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 @vite('resources/js/app.js')
 </body>
 </html>
