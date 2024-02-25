@@ -5,12 +5,16 @@
             <x-back-link :route="route('administrative.index')" :text="'Назад'"></x-back-link>
         </div>
         <div class="flex flex-col items-center py-16">
-            <div class="text-3xl">Сотрудники</div>
+            <div class="text-3xl font-bold text-center">Сотрудники</div>
             <a href="{{ route('employees.create') }}" class="py-1 flex justify-center w-9/12 lg:w-4/12 mt-3 bg-green-500 rounded-3xl text-xl hover:scale-105 transition-all">Добавить сотрудника</a>
         </div>
-        @if(session('message'))
-            <div class="w-full p-5 bg-green-500 rounded-3xl">
-                <span class="text-xl">{{session('message')}}</span>
+        @if(session('success-message'))
+            <div class="w-full p-5 my-3 bg-green-500 rounded-3xl">
+                <span class="text-xl">{{session('success-message')}}</span>
+            </div>
+        @elseif(session('error-message'))
+            <div class="w-full p-5 my-3 bg-red-400 rounded-3xl">
+                <span class="text-xl">{{session('error-message')}}</span>
             </div>
         @endif
         @if($employees->count())
@@ -84,10 +88,10 @@
                     <?php /** @var \App\Models\Employee $employee */ ?>
                 @foreach($employees as $employee)
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 p-3 my-3 bg-white dark:bg-slate-700 rounded-3xl text-xl">
-                        <div class="col-span-1 lg:col-span-2 flex items-center justify-center">
+                        <div class="col-span-1 lg:col-span-2 flex items-center justify-center text-center">
                             <span class="">{{ $employee->getFullName() }}</span>
                         </div>
-                        <div class="col-span-1 hidden md:flex md:items-center md:justify-center">
+                        <div class="col-span-1 hidden md:flex md:items-center md:justify-center text-center">
                             <span class="">{{ $employee->position?->name ?: '-' }}</span>
                         </div>
                         <div class="col-span-1 hidden lg:flex lg:items-center lg:justify-center">

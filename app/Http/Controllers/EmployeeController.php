@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\SortDirection;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use App\Models\Position;
@@ -15,20 +16,24 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        $perPage = 50;
         $sortBy = $request->sortBy ?? '';
         $order = $request->order ?? '';
         $employees = [];
 
-        if ($sortBy && $order) {
+        if (
+            ($sortBy && $order)
+            && $this->validateRequest($sortBy, $order)
+        ) {
             if ($sortBy === 'position') {
-                $employees = $this->getByPositionSort($order);
+                $employees = $this->getByPositionSort($order, $perPage);
             } else {
                 $employees = Employee::query()
                     ->orderBy($sortBy, $order)
-                    ->paginate(50);
+                    ->paginate($perPage);
             }
         } else {
-            $employees = Employee::query()->orderBy('id')->paginate(50);
+            $employees = Employee::query()->orderBy('id')->paginate($perPage);
         }
 
         return view('employees.index', compact('employees'));
@@ -50,9 +55,13 @@ class EmployeeController extends Controller
     public function store(EmployeeRequest $request)
     {
         $validatedData = $request->validated();
-        Employee::query()->create($validatedData)->save();
+        $isCreated = Employee::query()->create($validatedData)->save();
 
-        return redirect(route('employees.index'))->with('message', 'Сотрудник успешно добавлен.');
+        if ($isCreated) {
+            return redirect(route('employees.index'))->with('success-message', 'Сотрудник успешно добавлен');
+        }
+
+        return redirect(route('employees.index'))->with('error-message', 'Ошибка при добавлении сотрудника');
     }
 
     /**
@@ -79,9 +88,13 @@ class EmployeeController extends Controller
     public function update(EmployeeRequest $request, Employee $employee)
     {
         $validatedData = $request->validated();
-        $employee->update($validatedData);
+        $isUpdated = $employee->update($validatedData);
 
-        return redirect(route('employees.show', $employee))->with('message', 'Данные успешно обновлены.');
+        if ($isUpdated) {
+            return redirect(route('employees.show', $employee))->with('success-message', 'Данные успешно обновлены');
+        }
+
+        return redirect(route('employees.show'))->with('error-message', 'Ошибка при обновлении данных');
     }
 
     /**
@@ -90,22 +103,45 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         $fullName = $employee->getFullName();
-        $employee->delete();
+        $isDeleted = $employee->delete();
 
-        return redirect(route('employees.index'))->with('message', "Сотрудник $fullName успешно удалён.");
+        if ($isDeleted) {
+            return redirect(route('employees.index'))->with('success-message', "Сотрудник $fullName успешно удалён");
+        }
+
+        return redirect(route('employees.index'))->with('error-message', "Ошибка при удалении сотрудника $fullName");
     }
 
     /**
      * Получение списка сотрудников, отсортированных по должности
      *
      * @param string $order
+     * @param int $perPage
      * @return mixed
      */
-    private function getByPositionSort(string $order): mixed
+    private function getByPositionSort(string $order, int $perPage = 50): mixed
     {
         return Employee::select('employees.*')
             ->join('positions', 'positions.id', '=', 'employees.position_id')
             ->orderBy('positions.name', $order)
-            ->paginate(50);
+            ->paginate($perPage);
+    }
+
+    /**
+     * Проверка на существование переданных для сортировки имени поля в таблице и направления сортировки
+     *
+     * @param string $sortBy
+     * @param string $order
+     * @return bool
+     */
+    private function validateRequest(string $sortBy, string $order): bool
+    {
+        $employee = Employee::query()->first();
+
+        if ($employee) {
+            return $employee->$sortBy && SortDirection::tryFrom(strtoupper($order));
+        }
+
+        return false;
     }
 }

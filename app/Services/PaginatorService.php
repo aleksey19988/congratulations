@@ -20,7 +20,10 @@ class PaginatorService
             // чтобы в url не было указано 2 разные страницы
             if (stripos($nextOrPrevPageUrl, 'page') !== false) {
                 $getParams = preg_replace('/page=(\d+)/', '', $getParams);
-                if ($getParams[0] === '&') {
+                if (
+                    $getParams
+                    && $getParams[0] === '&'
+                ) {
                     $getParams = substr($getParams, 1);
                 }
             }
