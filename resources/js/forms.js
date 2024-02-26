@@ -3,13 +3,15 @@ import {
     Input,
     initTE,
 } from "tw-elements";
+import { detecDevice } from './functions.js';
 
 initTE({ Datepicker, Input });
 
 window.onload = function() {
+    detecDevice();
     const datepickerDisableFuture = document.getElementById('date-input');
     if (datepickerDisableFuture) {
-        // Костыль для ситуаций, когда календарь был открыт и закрыт (между открытием и закрытием не было кликов)
+        // Костыль для ситуаций, когда календарь был открыт и закрыт (и между открытием и закрытием не было кликов)
         datepickerDisableFuture.onclick = function() {
             setTimeout(function() {
                 datepickerDisableFuture.click();
@@ -66,7 +68,7 @@ window.onload = function() {
         });
     }
 
-    // Удаление border у псевдоэлементов поля ввода даты
+    // Удаление border у псевдоэлементов поля ввода даты для сохранения дизайна полей ввода
     let datepickerPseudoElements = document.querySelectorAll('.pointer-events-none');
     datepickerPseudoElements.forEach(function(elem) {
         elem.style.border = 'none';

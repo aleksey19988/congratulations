@@ -53,13 +53,23 @@
                         <x-input-error :messages="$errors->get('patronymic')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 flex justify-center flex-col">
+                    <div class="mb-3 justify-center flex-col hidden" id="js-desktop-date-input-container">
                         <x-date-input
                             type="text"
                             name="birthday"
                             class="w-96 p-3"
                             value="{{ \Carbon\Carbon::make($employee->birthday)->format('d.m.Y') }}"
                         ></x-date-input>
+                        <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
+                    </div>
+
+                    <div class="mb-3 justify-center flex-col hidden" id="js-mobile-date-input-container">
+                        <x-text-input
+                            type="date"
+                            name="birthday"
+                            class="w-96 p-3"
+                            value="{{ old('birthday') }}"
+                        ></x-text-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
 
