@@ -63,6 +63,7 @@
                             type="date"
                             name="birthday"
                             class="w-96 p-3"
+                            placeholder="Дата рождения"
                             value="{{ old('birthday') }}"
                         ></x-text-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
