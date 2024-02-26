@@ -63,7 +63,7 @@
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
 
-                    <div class="mb-3 justify-center flex-col" id="js-mobile-date-input-container">
+                    <div class="mb-3 justify-center flex-col hidden" id="js-mobile-date-input-container">
                         <x-text-input
                             type="text"
                             name="birthday"
@@ -71,7 +71,7 @@
                             placeholder="Дата рождения"
                             onfocus="(this.type='date')"
                             onblur="if(this.value==''){this.type='text'}"
-                            value="{{ old('birthday') }}"
+                            value="{{ \Carbon\Carbon::make($employee->birthday)->format('d.m.Y') }}"
                         ></x-text-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>

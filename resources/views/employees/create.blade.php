@@ -64,6 +64,8 @@
                             name="birthday"
                             class="w-96 p-3"
                             placeholder="Дата рождения"
+                            onfocus="(this.type='date')"
+                            onblur="if(this.value==''){this.type='text'}"
                             value="{{ old('birthday') }}"
                         ></x-text-input>
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
